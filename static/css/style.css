@@ -1,0 +1,170 @@
+/*
+ * {
+        margin: 0;
+        padding: 0;
+    }
+    button,
+    input{
+        outline: none;
+    }
+    .w {
+        width: 1200px;
+        margin: 0 auto;
+    }
+    .header {
+        padding: 10px 0;
+        height: 50px;
+        line-height: 50px;
+    }
+    .f {
+        float: left;
+    }
+    .r {
+        float: right;
+    }
+    .logo {
+        width: 25%;
+        height: 100%;
+    }
+    .logo h1 i {
+        color: pink;
+    }
+    .search {
+        width: 45%;
+    }
+    .search input {
+        border: 1px solid black;
+        padding-left: 30px;
+        margin-right: 2%;
+        width: 80%;
+        border-radius: 10px;
+        height: 41px;
+    }
+    .search span {
+        font-size: 18px;
+    }
+    .login {
+        width: 30%;
+    }
+    .login button {
+        border: 1px solid black;
+        cursor: pointer;
+        width: 30%;
+        margin: 0 20px;
+        height: 41px;
+        padding: 0 20px ;
+        border-radius: 10px;
+        background-color: transparent;
+    }
+    .main {
+        margin-top: 50px;
+        height: 400px;
+    }
+    .most,
+    .new {
+        width: 20%;
+        height: 100%;
+        border: 1px solid black;
+    }
+    .silde {
+        width: 49%;
+        height: 100%;
+        margin: 0 5%;
+    }
+    .most_hd,
+    .new_hd{
+        font-size: 18px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        border-bottom: 1px solid black;
+    }
+    .most_bd,
+    .new_bd {
+        padding: 20px;
+    }
+    .silde {
+        border: 1px solid black;
+        border-radius: 50px;
+    }
+    .silde p {
+        text-align: center;
+    }
+    .banner {
+        position: relative;
+        height: 100%;
+        margin-bottom: 10px;
+    }
+    .banner img {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+    }
+    .bq{
+        width: 50px;
+        height: 80px;
+        background-color: rgba(0,0,0,0.2);
+        position: absolute;
+        font-size: 30px;
+        line-height: 80px;
+        text-align: center;
+        top: 50%;
+        transform: translateY(-50%);
+        color: white;
+        cursor: pointer;
+    }
+    #left{
+        left: 0;
+    }
+    #right{
+        right: 0;
+    }
+    */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+#a1
+{
+    font-size: 50px;
+    text-decoration: none;
+}
+
+a:link
+{
+  color: red;
+}
+
+a:visited
+{
+  color: red;
+}
+
+a:hover
+{
+ color: greenyellow;
+}
+
+a:active:
+{
+    color: black;
+}
+*/

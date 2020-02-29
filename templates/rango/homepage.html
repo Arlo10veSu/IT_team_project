@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homepage</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/homepage.css' %}">
+</head>
+<body>
+    <div class="w header">
+    <div class="logo f">
+        <img  class="f" src="{% static 'images/t.jpg' %}" alt="" height="50">
+        <h1 class="f"><i>chinesefood</i></h1>
+    </div>
+    <div class="search f">
+        <input type="search"><span>search</span>
+    </div>
+    <div class="login f">
+        <button>sign up</button>
+        <button>log in</button>
+    </div>
+</div>
+
+<div class="w main">
+    <div class="most f">
+        <div class="most_hd">
+            Most popular
+        </div>
+        <div class="most_bd"></div>
+    </div>
+    <div class="silde f">
+        <div class="banner" id="box">
+            <img src="{% static 'images/1.jpg' %}" alt="" width="450" height="350" id="pic">
+            <div id="left" class="bq"><</div>
+            <div id="right" class="bq">></div>
+        </div>
+        <p>recent trend</p>
+    </div>
+
+    <div class="new f">
+        <div class="new_hd">
+            New food
+        </div>
+        <div class="new_bd">
+             {% if categories %}
+            <ul>
+                {% for category in categories %}
+                    <a id="a1" href="/rango/category/{{ category.slug }}/">{{ category.slug }}</a><br />
+                {% endfor %}
+            </ul>
+    {% endif %}
+        </div>
+    </div>
+</div>
+
+
+</body>
+
+</html>
