@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+
+        Chinese Food
+        {% block title_block %}
+        {% endblock %}
+    </title>
+</head>
+<body>
+    <div>
+        {% block body_block %}
+            This is the default content.
+        {% endblock %}
+    </div>
+    <hr />
+    <div>
+        <a href="{% url 'add_category' %}">Add New Category</a><br />
+        <a href="{% url 'homepage' %}">HomePage</a><br />
+        <a href="{% url 'register' %}">Register Here</a>
+    </div>
+</body>
+</html>

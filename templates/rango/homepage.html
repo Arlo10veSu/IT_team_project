@@ -17,8 +17,19 @@
         <input type="search"><span>search</span>
     </div>
     <div class="login f">
-        <button>sign up</button>
-        <button>log in</button>
+        {% if user.is_authenticated %}
+            hello {{ user.username }}!
+            <button>
+                <a href="/rango/logout/">Logout</a>
+            </button>
+        {% else %}
+            <button>
+                <a href="/rango/register/">Register</a>
+            </button>
+            <button>
+                 <a href="/rango/login/">Login</a>
+            </button>
+        {% endif %}
     </div>
 </div>
 
@@ -47,13 +58,14 @@
             <ul>
                 {% for category in categories %}
                     <a id="a1" href="/rango/category/{{ category.slug }}/">{{ category.slug }}</a><br />
+
                 {% endfor %}
             </ul>
-    {% endif %}
+            {% endif %}
+            <!-- show visitors <p>Visits: {{ visits }}</p> -->
         </div>
     </div>
 </div>
-
 
 </body>
 

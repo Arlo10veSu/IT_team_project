@@ -1,28 +1,29 @@
 <!DOCTYPE html>
+
+{% load staticfiles %}
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Rango</title>
+    {{ category.name }}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
 </head>
+
 <body>
-    <div>
-        {% if category %}
-            <h1>{{ category.category }}</h1>
-            {% if dishes %}
-                <ul>
-                    {% for dish in dishes %}
-                        <li><a href="{{ dish.url }}">{{ dish.dish }}</a> </li>
-                    {% endfor %}
-                </ul>
-            {% else %}
-                <strong>No dishes currently in category</strong>
-            {% endif %}
+    {% if category %}
+        <h1>{{ category.category }}</h1>
+        {% if dishes %}
+            <ul>
+                {% for dish in dishes %}
+                    <li><a href="{{ dish.url }}">{{ dish.dish }}</a> </li>
+                {% endfor %}
+            </ul>
         {% else %}
-            This category does not exist.
+            <strong>No dishes currently in category</strong>
         {% endif %}
-        <div>
-            <a href="/rango/category/{{ category.slug}}/add_dish/">Add a dish</a><br />
-        </div>
+    {% else %}
+        This category does not exist.
+    {% endif %}
+    <div>
+        <a href="/rango/category/{{ category.slug}}/add_dish/">Add a dish</a><br />
     </div>
 </body>
 </html>
