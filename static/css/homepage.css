@@ -120,29 +120,36 @@
         right: 0;
     }
 
-#a1
-{
-    font-size: 35px;
-    text-decoration: none;
-    text-align: justify;
-}
+    #a1
+    {
+        font-size: 35px;
+        text-decoration: none;
+        text-align: justify;
+    }
 
-a:link
-{
-  color: red;
-}
+    .a2
+    {
+        font-size: 15px;
+        text-decoration: none;
+        text-align: justify;
+    }
 
-a:visited
-{
-  color: red;
-}
+    a:link
+    {
+      color: red;
+    }
 
-a:hover
-{
- color: greenyellow;
-}
+    a:visited
+    {
+      color: red;
+    }
 
-a:active:
-{
-    color: black;
-}
+    a:hover
+    {
+     color: greenyellow;
+    }
+
+    a:active:
+    {
+        color: black;
+    }

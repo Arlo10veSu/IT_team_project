@@ -34,7 +34,7 @@ def populate():
             "dish": "CDE",
             "ingredient": "none",
             "cost": "1 pound",
-            "url": "http://127.0.0.1:8000/rango/",
+            "url": "http://127.0.0.1:8000/rango/main_course1",
         }
     ]
 

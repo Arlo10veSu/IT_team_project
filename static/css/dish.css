@@ -1,0 +1,263 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+button,
+input {
+    outline: none;
+}
+
+.w {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.w1000 {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.header {
+    padding: 10px 0;
+    height: 50px;
+    line-height: 50px;
+}
+
+.f {
+    float: left;
+}
+
+.r {
+    float: right;
+}
+
+.logo {
+    width: 25%;
+    height: 100%;
+}
+
+.logo h1 i {
+    color: pink;
+}
+
+.search {
+    width: 45%;
+}
+
+.search input {
+    border: 2px solid black;
+    padding-left: 30px;
+    margin-right: 2%;
+    width: 80%;
+    border-radius: 10px;
+    height: 41px;
+}
+
+.search span {
+    font-size: 18px;
+}
+
+.log {
+    width: 30%;
+}
+
+.log button {
+    border: 2px solid black;
+    cursor: pointer;
+    width: 30%;
+    margin: 0 20px;
+    height: 41px;
+    padding: 0 20px;
+    border-radius: 10px;
+    background-color: transparent;
+}
+
+.main {
+    margin-top: 50px;
+    height: 500px;
+}
+
+.slide {
+    position: relative;
+}
+
+.main_l,
+.main_r {
+    padding: 2%;
+    height: 90%;
+    width: 40%;
+}
+
+li {
+    list-style: none;
+}
+
+.add {
+    margin-top: 30px;
+    padding: 10px;
+    height: 120px;
+    border-radius: 25px;
+    border: 2px solid black;
+}
+
+.content {
+    overflow: auto;
+    word-break: break-all;
+    width: 68%;
+    padding: 12px;
+    height: 78%;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+input[type='button'] {
+    vertical-align: middle;
+    width: 100%;
+    height: 30px;
+}
+
+.content ul li {
+    display: block;
+    height: 38px;
+    margin-bottom: 20px;
+}
+
+.login {
+    display: none;
+    width: 512px;
+    height: 280px;
+    position: fixed;
+    border: #ebebeb solid 1px;
+    left: 50%;
+    top: 50%;
+    background: #ffffff;
+    box-shadow: 0px 0px 20px #ddd;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+}
+
+.login-title {
+    width: 100%;
+    margin: 10px 0px 0px 0px;
+    text-align: center;
+    line-height: 40px;
+    height: 40px;
+    font-size: 18px;
+    position: relative;
+    cursor: move;
+}
+
+.login-input-content {
+    margin-top: 20px;
+}
+
+.login-button {
+    width: 50%;
+    margin: 30px auto 0px auto;
+    line-height: 40px;
+    font-size: 14px;
+    border: #ebebeb 1px solid;
+    text-align: center;
+}
+
+.login-bg {
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background: rgba(0, 0, 0, .3);
+}
+
+
+.login-button a {
+    display: block;
+}
+
+
+.login-input {
+    overflow: hidden;
+    margin: 0px 0px 20px 0px;
+}
+
+.login-input label {
+    float: left;
+    width: 90px;
+    padding-right: 10px;
+    text-align: right;
+    line-height: 35px;
+    height: 35px;
+    font-size: 14px;
+}
+
+.login-title span {
+    position: absolute;
+    font-size: 12px;
+    right: -20px;
+    top: -30px;
+    background: #ffffff;
+    border: #ebebeb solid 1px;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+}
+
+textarea {
+    resize: none;
+    border: 1px solid black;
+    height: 94px;
+    width: 329px;
+}
+
+.ing,
+.how {
+    width: 90%;
+    padding: 5%;
+    height: auto;
+    border-radius: 25px;
+    border: 2px solid black;
+}
+
+.how {
+    margin-top: 20px;
+}
+
+.ing > p:nth-child(1),
+.how > p:nth-child(1) {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.ing p,
+.how p {
+    line-height: 25px;
+}
+
+.how b {
+    display: block;
+    margin: 5px 0;
+    font-size: 18px;
+}
+
+.how div {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.how div p:nth-child(1) {
+    display: block;
+    height: 10%;
+    font-size: 18px;
+}
+.how div span {
+    display: block;
+    margin-left: 30px;
+}

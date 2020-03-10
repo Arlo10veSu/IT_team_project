@@ -159,4 +159,10 @@ def visitor_cookie_handler(request):
     request.session['visits'] = visits
 
 
+def test(request):
+    return render(request, 'rango/test.html')
+
+
+def main_course1(request):
+    return render(request, 'rango/main_course1.html')
 

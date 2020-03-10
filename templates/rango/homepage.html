@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <title>Homepage</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/homepage.css' %}">
+    <script type="text/javascript" src="{% static 'js/home.js' %}"></script>
 </head>
 <body>
     <div class="w header">
@@ -20,14 +21,14 @@
         {% if user.is_authenticated %}
             hello {{ user.username }}!
             <button>
-                <a href="/rango/logout/">Logout</a>
+                <a class="a2" href="{% url 'rango:logout' %}">Logout</a>
             </button>
         {% else %}
             <button>
-                <a href="/rango/register/">Register</a>
+                <a class="a2" href="{% url 'rango:register' %}">Register</a>
             </button>
             <button>
-                 <a href="/rango/login/">Login</a>
+                 <a class="a2" href="{% url 'rango:login' %}">Login</a>
             </button>
         {% endif %}
     </div>
@@ -42,9 +43,26 @@
     </div>
     <div class="silde f">
         <div class="banner" id="box">
-            <img src="{% static 'images/1.jpg' %}" alt="" width="450" height="350" id="pic">
-            <div id="left" class="bq"><</div>
-            <div id="right" class="bq">></div>
+            <ul>
+				<li style="display:none" id="a">
+					<img src="{% static 'images/1.jpg' %}" alt="" width="450" height="350">
+				</li>
+				<li style="display:none" id="b">
+					<img src="{% static 'images/2.jpg' %}" alt="" width="450" height="350">
+				</li>
+				<li style="display:none" id="c">
+					<img src="{% static 'images/3.jpg' %}" alt="" width="450" height="350">
+				</li>
+				<li style="display:block" id="d">
+					<img src="{% static 'images/4.jpg' %}" alt="" width="450" height="350">
+				</li>
+			</ul>
+            <div>
+				<button id="left" class="bq"><</button>
+			</div>
+            <div>
+				<button id="right" class="bq">></button>
+			</div>
         </div>
         <p>recent trend</p>
     </div>
@@ -67,6 +85,68 @@
     </div>
 </div>
 
+<!--
+<script>
+var jsBox=document.getElementById("box");
+var a=document.getElementById("a");
+var b=document.getElementById("b");
+var c=document.getElementById("c");
+var d=document.getElementById("d");
+var jsLeft=document.getElementById("left");
+var jsRight=document.getElementById("right");
+
+var num=1;
+var timer=setInterval(startLoop,1000);
+
+function startLoop() {
+    currentPage++;
+    change()
+}
+
+jsLeft.onclick=function() {
+    num --;
+    if (num < 1) {
+        num = 4;
+    }
+    analysis();
+}
+
+jsRight.onclick = function(){
+    num ++;
+    if (num > 4){
+        num = 1;
+    }
+    analysis();
+}
+
+function analysis(){
+      if(num==1){
+          a.style.display="block";
+          b.style.display="none";
+          c.style.display="none";
+          d.style.display="none";
+      }
+      if(num==2){
+          a.style.display="none";
+          b.style.display="block";
+          c.style.display="none";
+          d.style.display="none";
+      }
+      if(num==3){
+          a.style.display="none";
+          b.style.display="none";
+          c.style.display="block";
+          d.style.display="none";
+      }
+      if(num==4){
+          a.style.display="none";
+          b.style.display="none";
+          c.style.display="none";
+          d.style.display="block";
+      }
+}
+</script>
+-->
 </body>
 
 </html>
