@@ -1,0 +1,33 @@
+{% extends 'rango/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+{% endblock %}
+
+
+{% block image_block %}
+<img src="{% static 'images/soup1.png' %}" alt="" width="100%" id="pic">
+{% endblock %}
+
+{% block ingredients_block%}
+1 box of tofu (fresh)<br>
+100g pork (cooked)<br>
+50g black fungus<br>
+100g bamboo shoots<br>
+50g carrots<br>
+6 cups of water<br>
+1 tbsp salt<br>
+1 tbsp sugar<br>
+2 tbsp soy sauce<br>
+1 tbsp sesame oil<br>
+1 tbsp rice vinegar<br>
+1 tbsp corn starch<br>
+1 onion (chopped)<br>
+{% endblock %}
+
+{% block howToCook_block %}
+( 1 ) cut up the pork and tofu, slice the black fungus and bamboo shoots. Set them aside. <br>
+( 2 ) boil the water, add bamboo shoots, carrots, onion and black fungus, stir, then add the pork and tofu. <br>
+( 3 ) add prepared salt, sugar, soy sauce, sesame oil and vinegar. <br>
+( 4 ) mix up the corn starch and water, then add the mixture into the soup<br>
+{% endblock %}

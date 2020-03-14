@@ -3,26 +3,102 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>
+    {% block title_block %}
+    {% endblock %}
+    <title>chineseFood</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/dish.css' %}">
 
-        Chinese Food
-        {% block title_block %}
-
-        {% endblock %}
-        <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
-    </title>
 </head>
 <body>
-    <div>
-        {% block body_block %}
-            This is the default content.(cannot be seen)
-        {% endblock %}
+
+
+<div class="w header">
+    <div class="logo f">
+        <img class="f" src="{% static 'images/t.jpg' %}" alt="lolipop" height="50">
+        <h1 class="f"><i>chinesefood</i></h1>
     </div>
-    <hr />
-    <div>
-        <a href="{% url 'rango:add_category' %}">Add New Category</a><br />
-        <a href="{% url 'rango:homepage' %}">HomePage</a><br />
-        <a href="{% url 'rango:register' %}">Register Here</a>
+    <div class="search f">
+        <input type="search"><span>search</span>
     </div>
+    <div class="log f">
+        {% if user.is_authenticated %}
+            hello {{ user.username }}!
+            <button>
+                <a class="a2" href="{% url 'rango:logout' %}">Logout</a>
+            </button>
+        {% else %}
+            <button>
+                <a class="a2" href="{% url 'rango:register' %}">Register</a>
+            </button>
+            <button>
+                 <a class="a2" href="{% url 'rango:login' %}">Login</a>
+            </button>
+        {% endif %}
+    </div>
+</div>
+
+
+<div class="main w1000">
+    <div class="main_l f">
+        <div class="slide" id="box">
+            <div class="banner">
+                {% block image_block %}
+                <img src="{% static 'images/3.jpg' %}" alt="" width="100%" id="pic">
+                {% endblock %}
+            </div>
+        </div>
+
+        <div class="add">
+            <div class="content f">
+                <ul class="ul"></ul>
+            </div>
+            <div class="r" style="width: 20%;line-height: 110px">
+                <input type="button" value="Comment" id="link">
+            </div>
+        </div>
+    </div>
+    <div class="main_r r">
+        <div class="ing">
+            <p>Ingredients</p>
+            {% block ingredients_block %}
+            <p>skinless chicken breasts, cut into chunks (or use thighs or drumsticks)</p>
+            <p>
+                2 tsp cornflour  </br>
+                1 onion , diced</br>
+                2 tbsp rapeseed oil</br>
+                2 tbsp rapeseed oil</br>
+            </p>
+            {% endblock %}
+        </div>
+
+        <div class="how">
+            <p>How to cook</p>
+            <div>
+                {% block howToCook_block %}
+                <span style="vertical-align: middle">1. Toss the chicken pieces in the cornflour and season well. Set them aside.</span>
+                <span style="vertical-align: middle;">2. Fry the onion in half of the oil in a wok on a low to medium heat, until it softens – about 5-6 minutes – then add the garlic and cook for a minute. Stir in the spices and sugar and cook for another minute.</span>
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="login" class="login">
+    <div id="title" class="login-title">Add Comments
+        <span><a id="closeBtn" href="javascript:void(0);" class="close-login">Close</a></span>
+    </div>
+    <div class="login-input-content">
+        <div class="login-input">
+            <label>Comments：</label>
+            <textarea type="text" placeholder="Please input your comments" name="info[username]" id="username"
+                      class="list-input"></textarea>
+        </div>
+    </div>
+    <div id="addtext" class="login-button"><a href="javascript:void(0);" id="send">Send</a></div>
+</div>
+<div id="bg" class="login-bg"></div>
+
+
 </body>
+<script src="{% static 'js/base.js' %}" crossorigin="anonymous"> </script>
 </html>

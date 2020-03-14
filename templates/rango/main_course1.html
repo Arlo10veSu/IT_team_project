@@ -1,135 +1,35 @@
-<!DOCTYPE html>
+{% extends 'rango/base.html' %}
 {% load staticfiles %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>chineseFood</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/dish.css' %}">
-</head>
-<body>
 
-<div class="w header">
-    <div class="logo f">
-        <img class="f" src="{% static 'images/t.jpg' %}" alt="lolipop" height="50">
-        <h1 class="f"><i>chinesefood</i></h1>
-    </div>
-    <div class="search f">
-        <input type="search"><span>search</span>
-    </div>
-    <div class="log f">
-        <button>sign up</button>
-        <button>log in</button>
-    </div>
-</div>
-
-<div class="main w1000">
-    <div class="main_l f">
-        <div class="slide" id="box">
-            <div class="banner">
-                <img src="{% static 'images/3.jpg' %}" alt="" width="100%" id="pic">
-            </div>
-        </div>
-
-        <div class="add">
-            <div class="content f">
-                <ul class="ul"></ul>
-            </div>
-            <div class="r" style="width: 20%;line-height: 110px">
-                <input type="button" value="Comment" id="link">
-            </div>
-        </div>
-    </div>
-    <div class="main_r r">
-        <div class="ing">
-            <p>Ingredients</p>
-            <p>skinless chicken breasts, cut into chunks (or use thighs or drumsticks)</p>
-            <p>
-                2 tsp cornflour  </br>
-                1 onion , diced</br>
-                2 tbsp rapeseed oil</br>
-                2 tbsp rapeseed oil</br>
-            </p>
-        </div>
-
-        <div class="how">
-            <p>How to cook</p>
-            <div>
-                <p style="float: left">1.</p>
-                <span style="vertical-align: middle">Toss the chicken pieces in the cornflour and season well. Set them aside.</span>
-            </div>
-            <div>
-                <p style="float: left;">2.</p>
-                <span style="vertical-align: middle;">Fry the onion in half of the oil in a wok on a low to medium heat, until it softens – about 5-6 minutes – then add the garlic and cook for a minute. Stir in the spices and sugar and cook for another minute.</span>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div id="login" class="login">
-    <div id="title" class="login-title">Add Comments
-        <span><a id="closeBtn" href="javascript:void(0);" class="close-login">Close</a></span>
-    </div>
-    <div class="login-input-content">
-        <div class="login-input">
-            <label>Comments：</label>
-            <textarea type="text" placeholder="Please input your comments" name="info[username]" id="username"
-                      class="list-input"></textarea>
-        </div>
-    </div>
-    <div id="addtext" class="login-button"><a href="javascript:void(0);" id="send">Send</a></div>
-</div>
-<div id="bg" class="login-bg"></div>
+{% block title_block %}
+{% endblock %}
 
 
-</body>
-<script type="text/javascript">
-    //移动框体，测试中...
-    var login = document.querySelector('.login');
-    var mask = document.querySelector('.login-bg');
-    var link = document.querySelector('#link');
-    var closeBtn = document.querySelector('#closeBtn');
-    var title = document.querySelector('#title');
-    link.addEventListener('click', function () {
-        mask.style.display = 'block';
-        login.style.display = 'block';
-    })
-    closeBtn.addEventListener('click', function () {
-        mask.style.display = 'none';
-        login.style.display = 'none';
-    })
-    title.addEventListener('mousedown', function (e) {
-        var x = e.pageX - login.offsetLeft;
-        var y = e.pageY - login.offsetTop;
-        document.addEventListener('mousemove', move)
-        function move(e) {
-            login.style.left = e.pageX - x + 'px';
-            login.style.top = e.pageY - y + 'px';
-        }
-        document.addEventListener('mouseup', function () {
-            document.removeEventListener('mousemove', move);
-        })
-    })
+{% block image_block %}
+<img src="{% static 'images/main_course1.png' %}" alt="" width="100%" id="pic">
+{% endblock %}
 
-    //发布评论
-    var text = document.querySelector('textarea');
-    link.addEventListener('click', function () {
-        text.value = '';
-    })
-    var ul = document.querySelector('.ul');
-    var send = document.querySelector('#send');
-    send.addEventListener('click', function () {
-        if (text.value === '') {
-            alert('You have not input anything.');
-            return false;
-        } else {
-            var li = document.createElement('li');
-            li.innerHTML = text.value + "</br>";
-            ul.insertBefore(li, ul.children[0]);
-        }
-        mask.style.display = 'none';
-        login.style.display = 'none';
-    })
+{% block ingredients_block %}
+3 tablespoons of chili noodles<br>
+Garlic 1<br>
+Spinach 1<br>
+Soy sauce 25g<br>
+Old soy 8g<br>
+Vinegar 8g<br>
+Chicken spoon 1<br>
+Salt 5g<br>
+Flour 400g<br>
+Water 200 ml<br>
+Salt 3 g<br>
+Vegetable oil 100g<br>
 
+{% endblock %}
 
-</script>
-</html>
+{% block howToCook_block %}
+1.	400 grams of flour, 200 ml of water, 3 grams of salt, and smooth dough! Mix the dough and let it rest for about 30 minutes, then knead it again and let it stand for about 30 minutes, repeat at least 3 times!<br>
+2.	Brush a small amount of vegetable oil on the case, roll out the noodles, roll a little thin, and evenly oil the surface. Cover with oil paper and let stand for about 30 minutes, then start making ramen.<br>
+3.	Simmer the spinach and squeeze out the water.<br>
+4.	Add water to boil, then add noodles. Remove the cooked noodles, wash them with cold water, drain the water and place in a basin.<br>
+5.	Add spinach, chili noodles, minced garlic, raw soy sauce, old soy sauce, vinegar, chicken essence, and 5 grams of salt.<br>
+6.	Dip in hot oil and mix well.<br>
+{% endblock %}

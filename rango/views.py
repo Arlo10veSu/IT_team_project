@@ -166,3 +166,47 @@ def test(request):
 def main_course1(request):
     return render(request, 'rango/main_course1.html')
 
+
+def main_course2(request):
+    return render(request, 'rango/main_course2.html')
+
+
+def main_course3(request):
+    return render(request, 'rango/main_course3.html')
+
+
+def soup1(request):
+    return render(request, 'rango/soup1.html')
+
+
+def soup2(request):
+    return render(request, 'rango/soup2.html')
+
+
+def soup3(request):
+    return render(request, 'rango/soup3.html')
+
+
+def dessert1(request):
+    return render(request, 'rango/dessert1.html')
+
+
+def dessert2(request):
+    return render(request, 'rango/dessert2.html')
+
+
+def dessert3(request):
+    return render(request, 'rango/dessert3.html')
+
+
+def starter1(request):
+    return render(request, 'rango/starter1.html')
+
+
+def starter2(request):
+    return render(request, 'rango/starter2.html')
+
+
+def starter3(request):
+    return render(request, 'rango/starter3.html')
+

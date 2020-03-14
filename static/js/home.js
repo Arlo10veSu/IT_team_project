@@ -7,14 +7,14 @@ var jsLeft=document.getElementById("left");
 var jsRight=document.getElementById("right");
 
 var num=1;
-var timer=setInterval(startLoop,1000);
+//var timer=setInterval(startLoop,1000);
 
-function startLoop() {
-    currentPage++;
-    change()
-}
+//function startLoop() {
+//    currentPage++;
+//    change()
+//}
 
-jsLeft.onclick=function() {
+jsLeft.onclick = function() {
     num --;
     if (num < 1) {
         num = 4;

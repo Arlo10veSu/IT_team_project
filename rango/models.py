@@ -26,8 +26,6 @@ class Category(models.Model):
 class Dish(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     dish = models.CharField(max_length=128, unique=True)
-    ingredient = models.CharField(max_length=128,)
-    cost = models.CharField(max_length=128)
     url = models.URLField()
 
     class Meta:
