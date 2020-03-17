@@ -5,8 +5,9 @@ from django.http import HttpResponse
 # Create your views here.
 from django.urls import reverse
 
+from rango import models
 from rango.forms import CategoryForm, DishForm
-from rango.models import Category, Dish
+from rango.models import Category, Dish, RemarkForm, Remark
 from rango.forms import UserForm, UserProfileForm
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
@@ -15,7 +16,11 @@ from datetime import datetime
 
 def homepage(request):
     category_list = Category.objects.order_by('-category')
-    context_dict = {'categories': category_list}
+    dish_list = Dish.objects.order_by('-likes')[:5]
+
+    context_dict = {}
+    context_dict['categories'] = category_list
+    context_dict['dishes'] = dish_list
 
     #This is the visitor data:
     visitor_cookie_handler(request)
@@ -209,4 +214,43 @@ def starter2(request):
 
 def starter3(request):
     return render(request, 'rango/starter3.html')
+
+
+def remark(request):
+    if request.method == "POST":
+        form = RemarkForm(request.POST)
+        if form.is_valid():
+            myremark = Remark()
+            myremark.subject = form.cleaned_data['subject']
+            myremark.mail = form.cleaned_data['mail']
+            myremark.topic = form.cleaned_data['topic']
+            myremark.message = form.cleaned_data['message']
+            myremark.cc_myself = form.cleaned_data['cc_myself']
+            myremark.save()
+    else:
+        form = RemarkForm()
+    context_dict = {
+        'form': form,
+        'ties': Remark.objects.all()
+    }
+    return render(request, 'rango/message.html', context=context_dict)
+
+
+def userInfor(request):
+    if request.method == "POST":
+        u = request.POST.get("username", None)
+        c = request.POST.get("comment", None)
+
+        models.UserInfor.objects.create(
+            username=u,
+            comment=c,
+        )
+
+        info_list = models.UserInfor.objects.all()
+
+        return render(request, "rango/userInfor.html", {"info_list": info_list})
+
+    info_list = models.UserInfor.objects.all()
+
+    return render(request, "rango/userInfor.html", {"info_list": info_list})
 

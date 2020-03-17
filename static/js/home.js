@@ -7,12 +7,6 @@ var jsLeft=document.getElementById("left");
 var jsRight=document.getElementById("right");
 
 var num=1;
-//var timer=setInterval(startLoop,1000);
-
-//function startLoop() {
-//    currentPage++;
-//    change()
-//}
 
 jsLeft.onclick = function() {
     num --;

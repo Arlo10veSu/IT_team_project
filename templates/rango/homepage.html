@@ -36,7 +36,14 @@
 <div class="w main">
     <div class="most f">
         <div class="most_hd">
-            Most popular
+            Most popular<br>
+            {% if dishes %}
+            <ul>
+                {% for dish in dishes %}
+                <a id="a2" href="{{ dish.url }}">{{ dish.dish }}</a><br>
+                {% endfor %}
+            </ul>
+            {% endif %}
         </div>
         <div class="most_bd"></div>
     </div>
@@ -44,16 +51,24 @@
         <div class="banner" id="box">
             <ul>
 				<li style="display:none" id="a">
-					<img src="{% static 'images/1.jpg' %}" alt="" width="450" height="350">
+                    <a href="{% url 'rango:main_course1' %}">
+					    <img src="{% static 'images/main_course1.png' %}" alt="" width="450" height="350">
+                    </a>
 				</li>
 				<li style="display:none" id="b">
-					<img src="{% static 'images/2.jpg' %}" alt="" width="450" height="350">
+                    <a href="{% url 'rango:dessert2' %}">
+					    <img src="{% static 'images/dessert2.png' %}" alt="" width="450" height="350">
+                    </a>
 				</li>
 				<li style="display:none" id="c">
-					<img src="{% static 'images/3.jpg' %}" alt="" width="450" height="350">
+                    <a href="{% url 'rango:soup3' %}">
+					    <img src="{% static 'images/soup3.png' %}" alt="" width="450" height="350">
+                    </a>
 				</li>
 				<li style="display:block" id="d">
-					<img src="{% static 'images/4.jpg' %}" alt="" width="450" height="350">
+                    <a href="{% url 'rango:starter1' %}">
+					    <img src="{% static 'images/starter1.png' %}" alt="" width="450" height="350">
+                    </a>
 				</li>
 			</ul>
             <div>
@@ -63,7 +78,7 @@
 				<button id="right" class="bq">></button>
 			</div>
         </div>
-        <p>recent trend</p>
+        <p>Our Recommendation</p>
     </div>
 
     <div class="new f">

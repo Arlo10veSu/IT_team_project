@@ -1,5 +1,5 @@
 from django.contrib import admin
-from rango.models import Category, Dish, UserProfile
+from rango.models import Category, Dish, UserProfile, Remark, UserInfor
 
 
 class DishAdmin(admin.ModelAdmin):
@@ -7,10 +7,15 @@ class DishAdmin(admin.ModelAdmin):
 
 
 class CategoryAdmin(admin.ModelAdmin):
-    prepopulated_fields = {'slug': ('category', )}
+    prepopulated_fields = {'slug': ('category',)}
 
 
+class RemarkAdmin(admin.ModelAdmin):
+    list_display = ('subject', 'mail', 'topic', 'message')
+
+
+admin.site.register(Remark, RemarkAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Dish, DishAdmin)
 admin.site.register(UserProfile)
-
+admin.site.register(UserInfor)

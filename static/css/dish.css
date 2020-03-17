@@ -12,7 +12,9 @@ input {
     width: 1200px;
     margin: 0 auto;
 }
-
+body{
+        background-color: #F8F8F5
+    }
 .w1000 {
     width: 1000px;
     margin: 0 auto;

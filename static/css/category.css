@@ -1,0 +1,57 @@
+ * {
+        margin: 0;
+        padding: 0;
+    }
+    button,
+    input{
+        outline: none;
+    }
+    .w {
+        width: 1200px;
+        margin: 0 auto;
+    }
+    .header {
+        padding: 10px 0;
+        height: 50px;
+        line-height: 50px;
+    }
+    .f {
+        float: left;
+    }
+    .r {
+        float: right;
+    }
+    .logo {
+        width: 25%;
+        height: 100%;
+    }
+    .logo h1 i {
+        color: pink;
+    }
+    .search {
+        width: 45%;
+    }
+    .search input {
+        border: 1px solid black;
+        padding-left: 30px;
+        margin-right: 2%;
+        width: 80%;
+        border-radius: 10px;
+        height: 41px;
+    }
+    .search span {
+        font-size: 18px;
+    }
+    .login {
+        width: 30%;
+    }
+    .login button {
+        border: 1px solid black;
+        cursor: pointer;
+        width: 30%;
+        margin: 0 20px;
+        height: 41px;
+        padding: 0 20px ;
+        border-radius: 10px;
+        background-color: transparent;
+    }

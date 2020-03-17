@@ -6,6 +6,9 @@
     input{
         outline: none;
     }
+    body{
+        background-color: #F8F8F5
+    }
     .w {
         width: 1200px;
         margin: 0 auto;
@@ -127,6 +130,10 @@
         text-align: justify;
     }
 
+    #a2
+    {
+        text-decoration: none;
+    }
     .a2
     {
         font-size: 15px;
