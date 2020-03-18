@@ -1,53 +1,24 @@
-<!DOCTYPE html>
-
+{% extends 'rango/base2.html' %}
 {% load staticfiles %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Homepage</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/homepage.css' %}">
-</head>
-<body>
-    <div class="w header">
-    <div class="logo f">
-        <img  class="f" src="{% static 'images/t.jpg' %}" alt="" height="50">
-        <h1 class="f"><i>chinesefood</i></h1>
-    </div>
-    <div class="search f">
-        <input type="search"><span>search</span>
-    </div>
-    <div class="login f">
-        {% if user.is_authenticated %}
-            hello {{ user.username }}!
-            <button>
-                <a class="a2" href="{% url 'rango:logout' %}">Logout</a>
-            </button>
+
+{% block body_block %}
+    <div>
+        {% if category %}
+            <h1>{{ category.category }}</h1>
+            {% if dishes %}
+                <ul>
+                    {% for dish in dishes %}
+                        <li><a href="{{ dish.url }}">{{ dish.dish }}</a> </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <strong>No dishes currently in category</strong>
+            {% endif %}
         {% else %}
-            <button>
-                <a class="a2" href="{% url 'rango:register' %}">Register</a>
-            </button>
-            <button>
-                 <a class="a2" href="{% url 'rango:login' %}">Login</a>
-            </button>
+            This category does not exist.
         {% endif %}
     </div>
-</div>
-    {% if category %}
-        <h1>{{ category.category }}</h1>
-        {% if dishes %}
-            <ul>
-                {% for dish in dishes %}
-                    <li><a href="{{ dish.url }}">{{ dish.dish }}</a> </li>
-                {% endfor %}
-            </ul>
-        {% else %}
-            <strong>No dishes currently in category</strong>
-        {% endif %}
-    {% else %}
-        This category does not exist.
-    {% endif %}
     <div>
         <a href="/rango/category/{{ category.slug}}/add_dish/">Add a dish</a><br />
     </div>
-</body>
-</html>
+{% endblock %}

@@ -25,7 +25,6 @@ title.addEventListener('mousedown', function (e) {
     })
 })
 
-//发布评论
 var text = document.querySelector('textarea');
 link.addEventListener('click', function () {
     text.value = '';

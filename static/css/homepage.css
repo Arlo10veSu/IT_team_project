@@ -6,9 +6,6 @@
     input{
         outline: none;
     }
-    body{
-        background-color: #F8F8F5
-    }
     .w {
         width: 1200px;
         margin: 0 auto;
@@ -160,3 +157,13 @@
     {
         color: black;
     }
+
+    #homepage_link
+    {
+        height: 100px;
+        width: 30%;
+        text-align:center;
+        line-height:100px;
+
+    }
+

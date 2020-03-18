@@ -1,9 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>ChineseFood</title>
-</head>
+{% extends 'rango/base2.html' %}
+{% load staticfiles %}
+
+{% block body_block %}
 <body>
     <h1>Add a new category</h1>
     <div>
@@ -20,5 +18,4 @@
             <input type="submit" name="submit" value="New Category" />
         </form>
     </div>
-</body>
-</html>
+{% endblock %}

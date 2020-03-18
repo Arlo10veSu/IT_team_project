@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homepage</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/homepage.css' %}">
+</head>
+<body>
+{% block head_block %}
+    <div class="w header">
+    <div class="logo f">
+        <img  class="f" src="{% static 'images/t.jpg' %}" alt="" height="50">
+        <h1 class="f"><i>chinesefood</i></h1>
+    </div>
+    <div class="search f">
+        <input type="search"><span>search</span>
+    </div>
+    <div class="login f">
+        {% if user.is_authenticated %}
+            hello {{ user.username }}!
+            <button>
+                <a class="a2" href=" {% url 'auth_logout' %}?next=/rango/">Logout</a>
+            </button>
+        {% else %}
+            <button>
+                <a class="a2" href="{% url 'registration_register' %}">Register</a>
+            </button>
+            <button>
+                 <a class="a2" href="{% url 'auth_login' %}">Login</a>
+            </button>
+        {% endif %}
+    </div>
+    </div>
+{% endblock %}
+
+{% block body_block %}
+{% endblock %}
+
+{% block homepage_block %}
+<div>
+    <br>
+    <a id="homepage_link" href="/rango/">Homepage</a><br>
+</div>
+{% endblock %}
+</body>
+</html>

@@ -24,14 +24,14 @@
         {% if user.is_authenticated %}
             hello {{ user.username }}!
             <button>
-                <a class="a2" href="{% url 'rango:logout' %}">Logout</a>
+                <a class="a2" href=" {% url 'auth_logout' %}?next=/rango/">Logout</a>
             </button>
         {% else %}
             <button>
-                <a class="a2" href="{% url 'rango:register' %}">Register</a>
+                <a class="a2" href="{% url 'registration_register' %}">Register</a>
             </button>
             <button>
-                 <a class="a2" href="{% url 'rango:login' %}">Login</a>
+                 <a class="a2" href="{% url 'auth_login' %}">Login</a>
             </button>
         {% endif %}
     </div>
@@ -47,15 +47,18 @@
                 {% endblock %}
             </div>
         </div>
-
         <div class="add">
-            <div class="content f">
-                <ul class="ul"></ul>
+            <div>
+                {% for i in info_list %}
+                    user{{ i.username }}: <br>
+                    &nbsp&nbsp&nbsp&nbspcomment: {{ i.comment }} <br>
+                {% endfor %}
             </div>
             <div class="r" style="width: 20%;line-height: 110px">
                 <input type="button" value="Comment" id="link">
             </div>
         </div>
+
     </div>
     <div class="main_r r">
         <div class="ing">
@@ -89,12 +92,16 @@
     </div>
     <div class="login-input-content">
         <div class="login-input">
-            <label>Comments：</label>
-            <textarea type="text" placeholder="Please input your comments" name="info[username]" id="username"
-                      class="list-input"></textarea>
+            {% block comment_block %}
+            <form action="/rango/soup1/" method="post">
+            {% endblock %}
+                {% csrf_token %}
+                <p>name: <input id="text1" name="name_input" value="{{ user.username }}" type="text" readonly></p>
+                <p>comment: <textarea id="text2" name="comment_input" style="OVERFLOW:   hidden"></textarea></p>
+                <div id="addtext" class="login-button"><p><input type="submit" value="submit"></p></div>
+            </form>
         </div>
     </div>
-    <div id="addtext" class="login-button"><a href="javascript:void(0);" id="send">Send</a></div>
 </div>
 <div id="bg" class="login-bg"></div>
 

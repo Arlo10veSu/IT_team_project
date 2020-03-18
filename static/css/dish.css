@@ -98,9 +98,10 @@ li {
 .add {
     margin-top: 30px;
     padding: 10px;
-    height: 120px;
+    height: 200px;
     border-radius: 25px;
-    border: 2px solid black;
+    border:1px solid #96c2f1;
+    background:#eff7ff
 }
 
 .content {
@@ -262,4 +263,16 @@ textarea {
 .how div span {
     display: block;
     margin-left: 30px;
+}
+
+#text1
+{
+    border-style:none;
+    background-color:transparent;
+
+}
+#text2
+{
+    background-color:transparent;
+    border:1px solid #96c2f1;
 }

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from rango.models import Category, Dish, UserProfile, Remark, UserInfor
+from rango.models import *
 
 
 class DishAdmin(admin.ModelAdmin):
@@ -19,3 +19,4 @@ admin.site.register(Category, CategoryAdmin)
 admin.site.register(Dish, DishAdmin)
 admin.site.register(UserProfile)
 admin.site.register(UserInfor)
+admin.site.register(UserComment)

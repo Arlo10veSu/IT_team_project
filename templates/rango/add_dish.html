@@ -1,11 +1,7 @@
-<!DOCTYPE html>
+{% extends 'rango/base2.html' %}
+{% load staticfiles %}
 
-<html>
-    <head>
-        <title>Rango</title>
-    </head>
-
-    <body>
+{% block body_block %}
         <h1>Add a dish</h1>
         <div>
             <form id="add_dish_form" method="post" action="/rango/category/{{ category.slug }}/add_dish/">
@@ -24,5 +20,4 @@
                 </div>
             </form>
         </div>
-    </body>
-</html>
+{% endblock %}

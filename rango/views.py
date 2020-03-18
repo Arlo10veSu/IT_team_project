@@ -7,7 +7,7 @@ from django.urls import reverse
 
 from rango import models
 from rango.forms import CategoryForm, DishForm
-from rango.models import Category, Dish, RemarkForm, Remark
+from rango.models import Category, Dish, RemarkForm, Remark, UserComment
 from rango.forms import UserForm, UserProfileForm
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
@@ -169,51 +169,195 @@ def test(request):
 
 
 def main_course1(request):
-    return render(request, 'rango/main_course1.html')
+    d = "main_course1"
+    if request.method == "POST":
+        u = request.POST.get("name_input", None)
+        c = request.POST.get("comment_input", None)
+        models.UserComment.objects.create(
+            username=u,
+            comment=c,
+            dish=d,
+        )
+        info_list = UserComment.objects.filter(dish=d)[:3]
+        return render(request, "rango/main_course1.html", {"info_list": info_list})
+    info_list = UserComment.objects.filter(dish=d)[:3]
+    return render(request, "rango/main_course1.html", {"info_list": info_list})
 
 
 def main_course2(request):
-    return render(request, 'rango/main_course2.html')
+    d = "main_course2"
+    if request.method == "POST":
+        u = request.POST.get("name_input", None)
+        c = request.POST.get("comment_input", None)
+        models.UserComment.objects.create(
+            username=u,
+            comment=c,
+            dish=d,
+        )
+        info_list = UserComment.objects.filter(dish=d)[:3]
+        return render(request, "rango/main_course2.html", {"info_list": info_list})
+    info_list = UserComment.objects.filter(dish=d)[:3]
+    return render(request, "rango/main_course2.html", {"info_list": info_list})
 
 
 def main_course3(request):
-    return render(request, 'rango/main_course3.html')
+    d = "main_course3"
+    if request.method == "POST":
+        u = request.POST.get("name_input", None)
+        c = request.POST.get("comment_input", None)
+        models.UserComment.objects.create(
+            username=u,
+            comment=c,
+            dish=d,
+        )
+        info_list = UserComment.objects.filter(dish=d)[:3]
+        return render(request, "rango/main_course3.html", {"info_list": info_list})
+    info_list = UserComment.objects.filter(dish=d)[:3]
+    return render(request, "rango/main_course3.html", {"info_list": info_list})
 
 
 def soup1(request):
-    return render(request, 'rango/soup1.html')
+    d = "soup1"
+    if request.method == "POST":
+        u = request.POST.get("name_input", None)
+        c = request.POST.get("comment_input", None)
+        models.UserComment.objects.create(
+            username=u,
+            comment=c,
+            dish=d,
+        )
+        info_list = UserComment.objects.filter(dish=d)[:3]
+        return render(request, "rango/soup1.html", {"info_list": info_list})
+    info_list = UserComment.objects.filter(dish=d)[:3]
+    return render(request, "rango/soup1.html", {"info_list": info_list})
 
 
 def soup2(request):
-    return render(request, 'rango/soup2.html')
+    d = "soup2"
+    if request.method == "POST":
+        u = request.POST.get("name_input", None)
+        c = request.POST.get("comment_input", None)
+        models.UserComment.objects.create(
+            username=u,
+            comment=c,
+            dish=d,
+        )
+        info_list = UserComment.objects.filter(dish=d)[:3]
+        return render(request, "rango/soup2.html", {"info_list": info_list})
+    info_list = UserComment.objects.filter(dish=d)[:3]
+    return render(request, "rango/soup2.html", {"info_list": info_list})
 
 
 def soup3(request):
-    return render(request, 'rango/soup3.html')
+    d = "soup3"
+    if request.method == "POST":
+        u = request.POST.get("name_input", None)
+        c = request.POST.get("comment_input", None)
+        models.UserComment.objects.create(
+            username=u,
+            comment=c,
+            dish=d,
+        )
+        info_list = UserComment.objects.filter(dish=d)[:3]
+        return render(request, "rango/soup3.html", {"info_list": info_list})
+    info_list = UserComment.objects.filter(dish=d)[:3]
+    return render(request, "rango/soup3.html", {"info_list": info_list})
 
 
 def dessert1(request):
-    return render(request, 'rango/dessert1.html')
+    d = "dessert1"
+    if request.method == "POST":
+        u = request.POST.get("name_input", None)
+        c = request.POST.get("comment_input", None)
+        models.UserComment.objects.create(
+            username=u,
+            comment=c,
+            dish=d,
+        )
+        info_list = UserComment.objects.filter(dish=d)[:3]
+        return render(request, "rango/dessert1.html", {"info_list": info_list})
+    info_list = UserComment.objects.filter(dish=d)[:3]
+    return render(request, "rango/dessert1.html", {"info_list": info_list})
 
 
 def dessert2(request):
-    return render(request, 'rango/dessert2.html')
+    d = "dessert2"
+    if request.method == "POST":
+        u = request.POST.get("name_input", None)
+        c = request.POST.get("comment_input", None)
+        models.UserComment.objects.create(
+            username=u,
+            comment=c,
+            dish=d,
+        )
+        info_list = UserComment.objects.filter(dish=d)[:3]
+        return render(request, "rango/dessert2.html", {"info_list": info_list})
+    info_list = UserComment.objects.filter(dish=d)[:3]
+    return render(request, "rango/dessert2.html", {"info_list": info_list})
 
 
 def dessert3(request):
-    return render(request, 'rango/dessert3.html')
+    d = "dessert3"
+    if request.method == "POST":
+        u = request.POST.get("name_input", None)
+        c = request.POST.get("comment_input", None)
+        models.UserComment.objects.create(
+            username=u,
+            comment=c,
+            dish=d,
+        )
+        info_list = UserComment.objects.filter(dish=d)[:3]
+        return render(request, "rango/dessert3.html", {"info_list": info_list})
+    info_list = UserComment.objects.filter(dish=d)[:3]
+    return render(request, "rango/dessert3.html", {"info_list": info_list})
 
 
 def starter1(request):
-    return render(request, 'rango/starter1.html')
+    d = "starter1"
+    if request.method == "POST":
+        u = request.POST.get("name_input", None)
+        c = request.POST.get("comment_input", None)
+        models.UserComment.objects.create(
+            username=u,
+            comment=c,
+            dish=d,
+        )
+        info_list = UserComment.objects.filter(dish=d)[:3]
+        return render(request, "rango/starter1.html", {"info_list": info_list})
+    info_list = UserComment.objects.filter(dish=d)[:3]
+    return render(request, "rango/starter1.html", {"info_list": info_list})
 
 
 def starter2(request):
-    return render(request, 'rango/starter2.html')
+    d = "starter2"
+    if request.method == "POST":
+        u = request.POST.get("name_input", None)
+        c = request.POST.get("comment_input", None)
+        models.UserComment.objects.create(
+            username=u,
+            comment=c,
+            dish=d,
+        )
+        info_list = UserComment.objects.filter(dish=d)[:3]
+        return render(request, "rango/starter2.html", {"info_list": info_list})
+    info_list = UserComment.objects.filter(dish=d)[:3]
+    return render(request, "rango/starter2.html", {"info_list": info_list})
 
 
 def starter3(request):
-    return render(request, 'rango/starter3.html')
+    d = "starter3"
+    if request.method == "POST":
+        u = request.POST.get("name_input", None)
+        c = request.POST.get("comment_input", None)
+        models.UserComment.objects.create(
+            username=u,
+            comment=c,
+            dish=d,
+        )
+        info_list = UserComment.objects.filter(dish=d)[:3]
+        return render(request, "rango/starter3.html", {"info_list": info_list})
+    info_list = UserComment.objects.filter(dish=d)[:3]
+    return render(request, "rango/starter3.html", {"info_list": info_list})
 
 
 def remark(request):
@@ -245,12 +389,8 @@ def userInfor(request):
             username=u,
             comment=c,
         )
-
         info_list = models.UserInfor.objects.all()
-
         return render(request, "rango/userInfor.html", {"info_list": info_list})
-
     info_list = models.UserInfor.objects.all()
-
     return render(request, "rango/userInfor.html", {"info_list": info_list})
 

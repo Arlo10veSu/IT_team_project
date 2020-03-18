@@ -79,3 +79,11 @@ class UserInfor(models.Model):
 
     def __str__(self):
         return self.username
+
+class UserComment(models.Model):
+    username = models.CharField(max_length=64)
+    comment = models.CharField(max_length=1028, default='')
+    dish = models.CharField(max_length=128, default='')
+
+    def __str__(self):
+        return self.username
