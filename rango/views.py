@@ -22,12 +22,13 @@ def homepage(request):
     context_dict['categories'] = category_list
     context_dict['dishes'] = dish_list
 
-    #This is the visitor data:
+    # This is the visitor data:
     visitor_cookie_handler(request)
     context_dict['visits'] = request.session['visits']
 
     response = render(request, 'rango/homepage.html', context=context_dict)
     return response
+
 
 def show_category(request, category_name_slug):
     context_dict = {}
@@ -156,7 +157,7 @@ def visitor_cookie_handler(request):
     last_visit_cookie = request.COOKIES.get('last_visit', str(datetime.now()))
     last_visit_time = datetime.strptime(last_visit_cookie[:-7], '%Y-%m-%d %H:%M:%S')
 
-    if(datetime.now() - last_visit_time).days > 0:
+    if (datetime.now() - last_visit_time).days > 0:
         visits = visits + 1
         request.session['last_visit'] = str(datetime.now())
     else:
@@ -360,26 +361,6 @@ def starter3(request):
     return render(request, "rango/starter3.html", {"info_list": info_list})
 
 
-def remark(request):
-    if request.method == "POST":
-        form = RemarkForm(request.POST)
-        if form.is_valid():
-            myremark = Remark()
-            myremark.subject = form.cleaned_data['subject']
-            myremark.mail = form.cleaned_data['mail']
-            myremark.topic = form.cleaned_data['topic']
-            myremark.message = form.cleaned_data['message']
-            myremark.cc_myself = form.cleaned_data['cc_myself']
-            myremark.save()
-    else:
-        form = RemarkForm()
-    context_dict = {
-        'form': form,
-        'ties': Remark.objects.all()
-    }
-    return render(request, 'rango/message.html', context=context_dict)
-
-
 def userInfor(request):
     if request.method == "POST":
         u = request.POST.get("username", None)
@@ -394,3 +375,24 @@ def userInfor(request):
     info_list = models.UserInfor.objects.all()
     return render(request, "rango/userInfor.html", {"info_list": info_list})
 
+
+def test(request):
+    if request.method == "POST":
+        keyword = request.POST.get("search", None)
+        allDish = Dish.objects.all()
+        SearchResult = []
+        for x in allDish:
+            if keyword in x.dish:
+                SearchResult.append(x)
+        SearchStatus = "Error" if len(SearchResult) == 0 else "Success"
+        ResultAmount = len(SearchResult)
+
+        return render(request, 'rango/test.html', {"keyword": keyword,
+                                               "SearchResult": SearchResult,
+                                               "SearchStatus": SearchStatus,
+                                               "ResultAmount": ResultAmount})
+    return render(request, 'rango/test.html')
+
+
+def index(request):
+    return render(request, 'rango/index.html')

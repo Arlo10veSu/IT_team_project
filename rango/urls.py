@@ -28,6 +28,6 @@ urlpatterns = [
     path('starter1/', views.starter1, name='starter1'),
     path('starter2/', views.starter2, name='starter2'),
     path('starter3/', views.starter3, name='starter3'),
-    path('remark/', views.remark, name='remark'),
-    path('userInfor/', views.userInfor, name='userInfor')
+    path('userInfor/', views.userInfor, name='userInfor'),
+    path('index/', views.index, name='index'),
 ]
