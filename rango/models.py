@@ -27,6 +27,7 @@ class Dish(models.Model):
     dish = models.CharField(max_length=128, unique=True)
     url = models.URLField()
     likes = models.IntegerField(default=0)
+    images = models.CharField(max_length=128, default="")
 
     class Meta:
         verbose_name_plural = 'Dishes'

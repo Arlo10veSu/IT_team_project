@@ -1,11 +1,23 @@
 {% extends 'rango/base2.html' %}
 {% load staticfiles %}
 
+{% block title_block %}
+<title>Register</title>
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+
 {% block body_block %}
+<div class="body_text">
     <h1>Register Here</h1>
     <form method="post" action=".">
         {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Submit" />
+        <div>
+            {{ form.as_p }}
+            <input type="submit" value="Submit" />
+        </div>
     </form>
+    <br>
+    <img src="{% static 'images/thanks.gif' %}" alt="Thank you for registration">
+</div>
 {% endblock %}

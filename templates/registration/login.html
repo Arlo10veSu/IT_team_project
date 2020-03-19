@@ -1,16 +1,25 @@
 {% extends 'rango/base2.html' %}
 {% load staticfiles %}
 
+{% block title_block %}
+<title>Login</title>
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
 {% block body_block %}
-    <h1>Login</h1>
-    <form method="post" action=".">
+<div class="body_text">
+    <h1 class="text1">Login</h1>
+    <form class="form-horizontal" role="form" method="post">
         {% csrf_token %}
+
         {{ form.as_p }}
-        <input type="submit" value="Log in" />
+        <button type="button" class="btn btn-success"><input class="button" type="submit" value="Log in" /></button>
         <input type="hidden" name="next" value="{{ next }}" />
     </form>
     <p>
         Not  a member?
         <a href="{% url 'registration_register' %}">Register</a>
     </p>
+    <img src="{% static 'images/hello.gif' %}" alt="Say hello">
+</div>
 {% endblock %}

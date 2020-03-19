@@ -1,16 +1,23 @@
 {% extends 'rango/base2.html' %}
 {% load staticfiles %}
 
-{% block body_block %}
+{% block title_block %}
+<title>HomePage</title>
+<link rel="stylesheet" href="{% static 'css/homepage.css' %}">
+{% endblock %}
 
+{% block body_block %}
 <div class="w main">
     <div class="most f">
-        <div class="most_hd">
+        <div class="most_hd panel-heading">
             Most popular<br>
             {% if dishes %}
             <ul>
                 {% for dish in dishes %}
-                <a id="a2" href="{{ dish.url }}">{{ dish.dish }}</a><br>
+                    <a href="{{ dish.url }}">
+                        {{ dish.dish }}&nbsp
+                        <span class="badge badge-info">{{ dish.likes }}</span>
+                    </a><br>
                 {% endfor %}
             </ul>
             {% endif %}
@@ -48,19 +55,21 @@
 				<button id="right" class="bq">></button>
 			</div>
         </div>
+
         <p>Our Recommendation</p>
     </div>
 
-    <div class="new f">
-        <div class="new_hd">
-            New food
+    <div class="new f ">
+        <div class="new_hd panel-heading">
+            Categories
         </div>
         <div class="new_bd">
              {% if categories %}
             <ul>
                 {% for category in categories %}
-                    <a id="a1" href="/rango/category/{{ category.slug }}/">{{ category.slug }}</a><br />
-
+                    <div id="a1">
+                        <a href="/rango/category/{{ category.slug }}/">{{ category.slug }}</a><br />
+                    </div>
                 {% endfor %}
             </ul>
             {% endif %}
@@ -68,6 +77,5 @@
         </div>
     </div>
 </div>
-
+<script src="{% static 'js/home.js' %}" crossorigin="anonymous"></script>
 {% endblock %}
-<script src="{% static 'js/home.js' %}" crossorigin="anonymous"></script>y

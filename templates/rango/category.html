@@ -1,14 +1,25 @@
 {% extends 'rango/base2.html' %}
 {% load staticfiles %}
 
+{% block title_block %}
+    <title>Category</title>
+    <link rel="stylesheet" href="{% static 'css/category.css' %}">
+{% endblock %}
+
 {% block body_block %}
+<div class="categories">
     <div>
         {% if category %}
-            <h1>{{ category.category }}</h1>
+            <h1 id="id1" >{{ category.category }}</h1>
             {% if dishes %}
                 <ul>
                     {% for dish in dishes %}
-                        <li><a href="{{ dish.url }}">{{ dish.dish }}</a> </li>
+                        <li>
+                            <a href="{{ dish.url }}">
+                                <img class="images" src="{{ dish.images }}" alt="{{ dish.dish }}" width="300" height="200">
+                                <span class="dish_name">{{ dish.dish }}</span> &nbsp<span class="badge badge-info">{{ dish.likes }}</span>
+                            </a>
+                        </li><br>
                     {% endfor %}
                 </ul>
             {% else %}
@@ -21,4 +32,5 @@
     <div>
         <a href="/rango/category/{{ category.slug}}/add_dish/">Add a dish</a><br />
     </div>
+</div>
 {% endblock %}

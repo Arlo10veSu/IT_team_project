@@ -1,19 +1,102 @@
 <!DOCTYPE html>
 {% load staticfiles %}
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Bootstrap</title>
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+	<meta charset="utf-8">
+	<title>Bootstrap 实例 - 导航栏中的表单</title>
+	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width,initial-scale=1, shrink-to-fit=no">
 </head>
 <body>
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-       <div class="container">
-           <div class="navbar-header">
-               <a href="#" class="navbar-brand">Project Name</a>
-           </div>
-       </div>
-    </nav>
+
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="/rango/">Chinese Food</a>
+    </div>
+    <div>
+        <ul class="nav navbar-nav navbar-left">
+            <li class="active"><a href="/rango/">Homepage</a></li>
+            <li><a href="{% url 'rango:test' %}">Search</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Categories
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    {% if categories %}
+                        {% for category in categories %}
+                            <li> <a id="a1" href="/rango/category/{{ category.slug }}/">{{ category.slug }}</a><br /></li>
+                        {% endfor %}
+                    {% endif %}
+                </ul>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            {% if user.is_authenticated %}
+            hello {{ user.username }}!
+            <li class="active">
+                <a class="a2" href=" {% url 'auth_logout' %}?next=/rango/">Logout</a>
+            </li>
+        {% else %}
+            <li class="active">
+                <a class="a2" href="{% url 'registration_register' %}">Register</a>
+            </li>
+            <li class="active">
+                 <a class="a2" href="{% url 'auth_login' %}">Login</a>
+            </li>
+        {% endif %}
+        </ul>
+        <form class="navbar-form navbar-right" role="search">
+            <button type="submit" class="btn btn-default">
+                Contact Us
+            </button>
+        </form>
+    </div>
+    </div>
+</nav>
+
+<div class="panel panel-primary">
+   <div class="panel-heading">
+      <h3 class="panel-title">1</h3>
+   </div>
+   <div class="panel-body">
+      This is a Basic panel
+   </div>
+</div>
+<div class="panel panel-success">
+   <div class="panel-heading">
+      <h3 class="panel-title">2</h3>
+   </div>
+   <div class="panel-body">
+      This is a Basic panel
+   </div>
+</div>
+<div class="panel panel-info">
+   <div class="panel-heading">
+      <h3 class="panel-title">3</h3>
+   </div>
+   <div class="panel-body">
+      This is a Basic panel
+   </div>
+</div>
+<div class="panel panel-warning">
+   <div class="panel-heading">
+      <h3 class="panel-title">4</h3>
+   </div>
+   <div class="panel-body">
+      This is a Basic panel
+   </div>
+</div>
+<div class="panel panel-danger">
+   <div class="panel-heading">
+      <h3 class="panel-title">5</h3>
+   </div>
+   <div class="panel-body">
+      This is a Basic panel
+   </div>
+</div>
 </body>
 </html>

@@ -1,6 +1,7 @@
 * {
         margin: 0;
         padding: 0;
+        background-color: transparent;
     }
     button,
     input{
@@ -9,6 +10,7 @@
     .w {
         width: 1200px;
         margin: 0 auto;
+        background-color: transparent;
     }
     .header {
         padding: 10px 0;
@@ -58,12 +60,14 @@
     .main {
         margin-top: 50px;
         height: 400px;
+        background-color: transparent;
     }
     .most,
     .new {
         width: 20%;
         height: 100%;
         border: 1px solid black;
+        background: none;
     }
     .silde {
         width: 49%;
@@ -72,11 +76,12 @@
     }
     .most_hd,
     .new_hd{
-        font-size: 18px;
+        font-size: 20px;
         height: 50px;
         line-height: 50px;
-        text-align: center;
-        border-bottom: 1px solid black;
+        text-align: left;
+        border-bottom: 4px solid pink;
+        background: none;
     }
     .most_bd,
     .new_bd {
@@ -119,51 +124,9 @@
     #right{
         right: 0;
     }
-
-    #a1
-    {
-        font-size: 35px;
-        text-decoration: none;
-        text-align: justify;
+    #a1{
+        font-size: 20px;
+        height: 50px;
+        line-height: 50px;
+        text-align: left;
     }
-
-    #a2
-    {
-        text-decoration: none;
-    }
-    .a2
-    {
-        font-size: 15px;
-        text-decoration: none;
-        text-align: justify;
-    }
-
-    a:link
-    {
-      color: red;
-    }
-
-    a:visited
-    {
-      color: red;
-    }
-
-    a:hover
-    {
-     color: greenyellow;
-    }
-
-    a:active:
-    {
-        color: black;
-    }
-
-    #homepage_link
-    {
-        height: 100px;
-        width: 30%;
-        text-align:center;
-        line-height:100px;
-
-    }
-

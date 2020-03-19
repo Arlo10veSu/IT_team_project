@@ -1,13 +1,13 @@
-.categories
+.search
 {
     margin-top: 5%;
-    margin-left: 20%;
     margin-right: auto;
     padding: 10px;
     height: auto;
+    text-align: center;
 }
 
-.dish_name
+#text1
 {
-    font-size: 25px;
+    width:600px;
 }

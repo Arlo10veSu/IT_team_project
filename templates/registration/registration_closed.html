@@ -1,7 +1,15 @@
 {% extends 'rango/base2.html' %}
 {% load staticfiles %}
 
+{% block title_block %}
+    <title>Register Success</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
 {% block body_block %}
+<div class="body_text">
     <h1>Registration Complete</h1>
     <p>You are now registered</p>
+    <p><a href="/rango/">HomePage</a> </p>
+</div>
 {% endblock %}

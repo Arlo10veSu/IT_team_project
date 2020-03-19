@@ -1,38 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<h1>创建个人信息</h1>
+<div class="popular_food">
+    <div class="panel panel-warning">
+       <div class="panel-heading">
+          <h3 class="panel-title">Most Popular Food</h3>
+       </div>
+       <div class="panel-body">
+          {% if dishes %}
+            <ul>
+                {% for dish in dishes %}
+                    <a href="{{ dish.url }}">{{ dish.dish }}&nbsp<span class="badge badge-info">{{ dish.likes }}</span></a><br>
+                {% endfor %}
+            </ul>
+            {% endif %}
+       </div>
+    </div>
+</div>
+<div class="recommendation">
+    <div class="panel panel-info">
+       <div class="panel-heading">
+          <h3 class="panel-title">Our Recommendation</h3>
+       </div>
+       <div class="panel-body">
+          <ul>
+            <li style="display:none" id="a">
+                <a href="{% url 'rango:main_course1' %}">
+                    <img src="{% static 'images/main_course1.png' %}" alt="" width="450" height="350">
+                </a>
+            </li>
+            <li style="display:none" id="b">
+                <a href="{% url 'rango:dessert2' %}">
+                    <img src="{% static 'images/dessert2.png' %}" alt="" width="450" height="350">
+                </a>
+            </li>
+            <li style="display:none" id="c">
+                <a href="{% url 'rango:soup3' %}">
+                    <img src="{% static 'images/soup3.png' %}" alt="" width="450" height="350">
+                </a>
+            </li>
+            <li style="display:block" id="d">
+                <a href="{% url 'rango:starter1' %}">
+                    <img src="{% static 'images/starter1.png' %}" alt="" width="450" height="350">
+                </a>
+            </li>
+           </ul>
+            <div>
+                <button id="left" class="bq"><</button>
+            </div>
+            <div>
+                <button id="right" class="bq">></button>
+            </div>
+       </div>
+    </div>
+</div>
 
-<form action="/rango/userInfor/" method="post">
-    {% csrf_token %}
-    <p>姓名<input type="text" name="username"></p>
-    <p>评论<textarea name="comment"   cols="40"   rows="4"   style="OVERFLOW:   hidden"></textarea></p>
-    <p><input type="submit" value="submit"></p>
-
-</form>
-
-<hr>
-
-<h1>信息展示</h1>
-
-<table border="1">
-
-    <tr>
-        <td>姓名</td>
-        <td>评论</td>
-    </tr>
-    {% for i in info_list %}
-
-        {{ i.username }}: <br>
-        {{ i.comment }}: <br>
-
-    {% endfor %}
-
-</table>
-
-</body>
-</html>
+<div class="categories">
+    <div class="panel panel-danger">
+        <div class="panel-heading">
+            <h3 class="panel-title">Categories</h3>
+        </div>
+        <div class="panel-body">
+            {% if categories %}
+            <ul>
+                {% for category in categories %}
+                    <a id="a1" href="/rango/category/{{ category.slug }}/">{{ category.slug }}</a><br />
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+    </div>
+</div>

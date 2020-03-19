@@ -32,7 +32,8 @@ def homepage(request):
 
 def show_category(request, category_name_slug):
     context_dict = {}
-
+    category_list = Category.objects.order_by('-category')
+    context_dict['categories'] = category_list
     try:
         category = Category.objects.get(slug=category_name_slug)
 
@@ -51,7 +52,7 @@ def show_category(request, category_name_slug):
 
 def add_category(request):
     form = CategoryForm
-
+    category_list = Category.objects.order_by('-category')
     if request.method == 'POST':
         form = CategoryForm(request.POST)
 
@@ -60,10 +61,12 @@ def add_category(request):
             return homepage(request)
         else:
             print(form.errors)
-    return render(request, 'rango/add_category.html', {'form': form})
+    return render(request, 'rango/add_category.html', {'form': form,
+                                                       'categories': category_list})
 
 
 def add_dish(request, category_name_slug):
+    category_list = Category.objects.order_by('-category')
     try:
         category = Category.objects.get(slug=category_name_slug)
     except Category.DoesNotExist:
@@ -85,7 +88,7 @@ def add_dish(request, category_name_slug):
             else:
                 print(form.errors)
 
-    context_dict = {'form': form, 'category': category}
+    context_dict = {'form': form, 'category': category, 'categories': category_list}
     return render(request, 'rango/add_dish.html', context=context_dict)
 
 
@@ -170,6 +173,7 @@ def test(request):
 
 
 def main_course1(request):
+    category_list = Category.objects.order_by('-category')
     d = "main_course1"
     if request.method == "POST":
         u = request.POST.get("name_input", None)
@@ -179,13 +183,16 @@ def main_course1(request):
             comment=c,
             dish=d,
         )
-        info_list = UserComment.objects.filter(dish=d)[:3]
-        return render(request, "rango/main_course1.html", {"info_list": info_list})
-    info_list = UserComment.objects.filter(dish=d)[:3]
-    return render(request, "rango/main_course1.html", {"info_list": info_list})
+        info_list = UserComment.objects.filter(dish=d)
+        return render(request, "rango/main_course1.html", {"info_list": info_list,
+                                                           "categories": category_list})
+    info_list = UserComment.objects.filter(dish=d)
+    return render(request, "rango/main_course1.html", {"info_list": info_list,
+                                                       "categories": category_list})
 
 
 def main_course2(request):
+    category_list = Category.objects.order_by('-category')
     d = "main_course2"
     if request.method == "POST":
         u = request.POST.get("name_input", None)
@@ -195,13 +202,16 @@ def main_course2(request):
             comment=c,
             dish=d,
         )
-        info_list = UserComment.objects.filter(dish=d)[:3]
-        return render(request, "rango/main_course2.html", {"info_list": info_list})
-    info_list = UserComment.objects.filter(dish=d)[:3]
-    return render(request, "rango/main_course2.html", {"info_list": info_list})
+        info_list = UserComment.objects.filter(dish=d)
+        return render(request, "rango/main_course2.html", {"info_list": info_list,
+                                                           "categories": category_list})
+    info_list = UserComment.objects.filter(dish=d)
+    return render(request, "rango/main_course2.html", {"info_list": info_list,
+                                                       "categories": category_list})
 
 
 def main_course3(request):
+    category_list = Category.objects.order_by('-category')
     d = "main_course3"
     if request.method == "POST":
         u = request.POST.get("name_input", None)
@@ -211,13 +221,16 @@ def main_course3(request):
             comment=c,
             dish=d,
         )
-        info_list = UserComment.objects.filter(dish=d)[:3]
-        return render(request, "rango/main_course3.html", {"info_list": info_list})
-    info_list = UserComment.objects.filter(dish=d)[:3]
-    return render(request, "rango/main_course3.html", {"info_list": info_list})
+        info_list = UserComment.objects.filter(dish=d)
+        return render(request, "rango/main_course3.html", {"info_list": info_list,
+                                                           "categories": category_list})
+    info_list = UserComment.objects.filter(dish=d)
+    return render(request, "rango/main_course3.html", {"info_list": info_list,
+                                                       "categories": category_list})
 
 
 def soup1(request):
+    category_list = Category.objects.order_by('-category')
     d = "soup1"
     if request.method == "POST":
         u = request.POST.get("name_input", None)
@@ -227,13 +240,16 @@ def soup1(request):
             comment=c,
             dish=d,
         )
-        info_list = UserComment.objects.filter(dish=d)[:3]
-        return render(request, "rango/soup1.html", {"info_list": info_list})
-    info_list = UserComment.objects.filter(dish=d)[:3]
-    return render(request, "rango/soup1.html", {"info_list": info_list})
+        info_list = UserComment.objects.filter(dish=d)
+        return render(request, "rango/soup1.html", {"info_list": info_list,
+                                                    "categories": category_list})
+    info_list = UserComment.objects.filter(dish=d)
+    return render(request, "rango/soup1.html", {"info_list": info_list,
+                                                "categories": category_list})
 
 
 def soup2(request):
+    category_list = Category.objects.order_by('-category')
     d = "soup2"
     if request.method == "POST":
         u = request.POST.get("name_input", None)
@@ -243,13 +259,16 @@ def soup2(request):
             comment=c,
             dish=d,
         )
-        info_list = UserComment.objects.filter(dish=d)[:3]
-        return render(request, "rango/soup2.html", {"info_list": info_list})
-    info_list = UserComment.objects.filter(dish=d)[:3]
-    return render(request, "rango/soup2.html", {"info_list": info_list})
+        info_list = UserComment.objects.filter(dish=d)
+        return render(request, "rango/soup2.html", {"info_list": info_list,
+                                                    "categories": category_list})
+    info_list = UserComment.objects.filter(dish=d)
+    return render(request, "rango/soup2.html", {"info_list": info_list,
+                                                "categories": category_list})
 
 
 def soup3(request):
+    category_list = Category.objects.order_by('-category')
     d = "soup3"
     if request.method == "POST":
         u = request.POST.get("name_input", None)
@@ -259,13 +278,16 @@ def soup3(request):
             comment=c,
             dish=d,
         )
-        info_list = UserComment.objects.filter(dish=d)[:3]
-        return render(request, "rango/soup3.html", {"info_list": info_list})
-    info_list = UserComment.objects.filter(dish=d)[:3]
-    return render(request, "rango/soup3.html", {"info_list": info_list})
+        info_list = UserComment.objects.filter(dish=d)
+        return render(request, "rango/soup3.html", {"info_list": info_list,
+                                                    "categories": category_list})
+    info_list = UserComment.objects.filter(dish=d)
+    return render(request, "rango/soup3.html", {"info_list": info_list,
+                                                "categories": category_list})
 
 
 def dessert1(request):
+    category_list = Category.objects.order_by('-category')
     d = "dessert1"
     if request.method == "POST":
         u = request.POST.get("name_input", None)
@@ -275,13 +297,16 @@ def dessert1(request):
             comment=c,
             dish=d,
         )
-        info_list = UserComment.objects.filter(dish=d)[:3]
-        return render(request, "rango/dessert1.html", {"info_list": info_list})
-    info_list = UserComment.objects.filter(dish=d)[:3]
-    return render(request, "rango/dessert1.html", {"info_list": info_list})
+        info_list = UserComment.objects.filter(dish=d)
+        return render(request, "rango/dessert1.html", {"info_list": info_list,
+                                                       "categories": category_list})
+    info_list = UserComment.objects.filter(dish=d)
+    return render(request, "rango/dessert1.html", {"info_list": info_list,
+                                                   "categories": category_list})
 
 
 def dessert2(request):
+    category_list = Category.objects.order_by('-category')
     d = "dessert2"
     if request.method == "POST":
         u = request.POST.get("name_input", None)
@@ -291,13 +316,16 @@ def dessert2(request):
             comment=c,
             dish=d,
         )
-        info_list = UserComment.objects.filter(dish=d)[:3]
-        return render(request, "rango/dessert2.html", {"info_list": info_list})
-    info_list = UserComment.objects.filter(dish=d)[:3]
-    return render(request, "rango/dessert2.html", {"info_list": info_list})
+        info_list = UserComment.objects.filter(dish=d)
+        return render(request, "rango/dessert2.html", {"info_list": info_list,
+                                                       "categories": category_list})
+    info_list = UserComment.objects.filter(dish=d)
+    return render(request, "rango/dessert2.html", {"info_list": info_list,
+                                                   "categories": category_list})
 
 
 def dessert3(request):
+    category_list = Category.objects.order_by('-category')
     d = "dessert3"
     if request.method == "POST":
         u = request.POST.get("name_input", None)
@@ -307,13 +335,16 @@ def dessert3(request):
             comment=c,
             dish=d,
         )
-        info_list = UserComment.objects.filter(dish=d)[:3]
-        return render(request, "rango/dessert3.html", {"info_list": info_list})
-    info_list = UserComment.objects.filter(dish=d)[:3]
-    return render(request, "rango/dessert3.html", {"info_list": info_list})
+        info_list = UserComment.objects.filter(dish=d)
+        return render(request, "rango/dessert3.html", {"info_list": info_list,
+                                                       "categories": category_list})
+    info_list = UserComment.objects.filter(dish=d)
+    return render(request, "rango/dessert3.html", {"info_list": info_list,
+                                                   "categories": category_list})
 
 
 def starter1(request):
+    category_list = Category.objects.order_by('-category')
     d = "starter1"
     if request.method == "POST":
         u = request.POST.get("name_input", None)
@@ -323,13 +354,16 @@ def starter1(request):
             comment=c,
             dish=d,
         )
-        info_list = UserComment.objects.filter(dish=d)[:3]
-        return render(request, "rango/starter1.html", {"info_list": info_list})
-    info_list = UserComment.objects.filter(dish=d)[:3]
-    return render(request, "rango/starter1.html", {"info_list": info_list})
+        info_list = UserComment.objects.filter(dish=d)
+        return render(request, "rango/starter1.html", {"info_list": info_list,
+                                                       "categories": category_list})
+    info_list = UserComment.objects.filter(dish=d)
+    return render(request, "rango/starter1.html", {"info_list": info_list,
+                                                   "categories": category_list})
 
 
 def starter2(request):
+    category_list = Category.objects.order_by('-category')
     d = "starter2"
     if request.method == "POST":
         u = request.POST.get("name_input", None)
@@ -339,13 +373,16 @@ def starter2(request):
             comment=c,
             dish=d,
         )
-        info_list = UserComment.objects.filter(dish=d)[:3]
-        return render(request, "rango/starter2.html", {"info_list": info_list})
-    info_list = UserComment.objects.filter(dish=d)[:3]
-    return render(request, "rango/starter2.html", {"info_list": info_list})
+        info_list = UserComment.objects.filter(dish=d)
+        return render(request, "rango/starter2.html", {"info_list": info_list,
+                                                       "categories": category_list})
+    info_list = UserComment.objects.filter(dish=d)
+    return render(request, "rango/starter2.html", {"info_list": info_list,
+                                                   "categories": category_list})
 
 
 def starter3(request):
+    category_list = Category.objects.order_by('-category')
     d = "starter3"
     if request.method == "POST":
         u = request.POST.get("name_input", None)
@@ -355,10 +392,13 @@ def starter3(request):
             comment=c,
             dish=d,
         )
-        info_list = UserComment.objects.filter(dish=d)[:3]
-        return render(request, "rango/starter3.html", {"info_list": info_list})
-    info_list = UserComment.objects.filter(dish=d)[:3]
-    return render(request, "rango/starter3.html", {"info_list": info_list})
+        info_list = UserComment.objects.filter(dish=d)
+        return render(request, "rango/starter3.html", {"info_list": info_list,
+                                                       "categories": category_list
+                                                       })
+    info_list = UserComment.objects.filter(dish=d)
+    return render(request, "rango/starter3.html", {"info_list": info_list,
+                                                   "categories": category_list})
 
 
 def userInfor(request):
@@ -377,6 +417,9 @@ def userInfor(request):
 
 
 def test(request):
+    context_dict = {}
+    category_list = Category.objects.order_by('-category')
+    context_dict['categories'] = category_list
     if request.method == "POST":
         keyword = request.POST.get("search", None)
         allDish = Dish.objects.all()
@@ -386,13 +429,19 @@ def test(request):
                 SearchResult.append(x)
         SearchStatus = "Error" if len(SearchResult) == 0 else "Success"
         ResultAmount = len(SearchResult)
-
-        return render(request, 'rango/test.html', {"keyword": keyword,
-                                               "SearchResult": SearchResult,
-                                               "SearchStatus": SearchStatus,
-                                               "ResultAmount": ResultAmount})
+        context_dict['keyword'] = keyword
+        context_dict['SearchResult'] = SearchResult
+        context_dict['SearchStatus'] = SearchStatus
+        context_dict['ResultAmount'] = ResultAmount
+        return render(request, 'rango/test.html', context=context_dict)
     return render(request, 'rango/test.html')
 
 
 def index(request):
-    return render(request, 'rango/index.html')
+    context_dict = {}
+    category_list = Category.objects.order_by('-category')
+    context_dict['categories'] = category_list
+
+
+    response = render(request, 'rango/index.html', context=context_dict)
+    return response

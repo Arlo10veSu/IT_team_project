@@ -1,0 +1,32 @@
+.popular_food
+{
+    margin-top: 5%;
+    padding: 2%;
+    height: 90%;
+    width: 30%;
+    float: left;
+}
+
+.food_images
+{
+    max-width: 100%;
+    height: auto;
+}
+
+.recommendation
+{
+    margin-top: 5%;
+    padding: 2%;
+    height: 90%;
+    width: auto;
+    float: left;
+}
+
+.categories
+{
+    margin-top: 5%;
+    padding: 2%;
+    height: 90%;
+    width: 30%;
+    float: right;
+}

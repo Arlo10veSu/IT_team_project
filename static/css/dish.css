@@ -98,7 +98,7 @@ li {
 .add {
     margin-top: 30px;
     padding: 10px;
-    height: 200px;
+    height: auto;
     border-radius: 25px;
     border:1px solid #96c2f1;
     background:#eff7ff
@@ -268,11 +268,25 @@ textarea {
 #text1
 {
     border-style:none;
-    background-color:transparent;
+
 
 }
 #text2
 {
-    background-color:transparent;
+
     border:1px solid #96c2f1;
+}
+body
+{
+    background-image:url('../images/background.jpg');
+    background-color: transparent;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+
+}
+
+.input1{
+
 }

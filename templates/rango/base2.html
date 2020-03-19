@@ -1,49 +1,70 @@
 <!DOCTYPE html>
-
 {% load staticfiles %}
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Homepage</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/homepage.css' %}">
+	<meta charset="utf-8">
+    {% block title_block %}
+	<title>Navigation Bar</title>
+    {% endblock %}
+	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width,initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{% static 'css/background.css' %}">
 </head>
 <body>
-{% block head_block %}
-    <div class="w header">
-    <div class="logo f">
-        <img  class="f" src="{% static 'images/t.jpg' %}" alt="" height="50">
-        <h1 class="f"><i>chinesefood</i></h1>
-    </div>
-    <div class="search f">
 
-        <input type="search"><span>search</span>
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="/rango/">Chinese Food</a>
     </div>
-    <div class="login f">
-        {% if user.is_authenticated %}
+    <div>
+        <ul class="nav navbar-nav navbar-left">
+            <li class="active"><a href="/rango/">Homepage</a></li>
+            <li><a href="{% url 'rango:test' %}">Search</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Categories
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    {% if categories %}
+                        {% for category in categories %}
+                            <li> <a id="a1" href="/rango/category/{{ category.slug }}/">{{ category.slug }}</a><br /></li>
+                        {% endfor %}
+                    {% endif %}
+                </ul>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            {% if user.is_authenticated %}
             hello {{ user.username }}!
-            <button>
+            <li class="active">
                 <a class="a2" href=" {% url 'auth_logout' %}?next=/rango/">Logout</a>
-            </button>
+            </li>
         {% else %}
-            <button>
+            <li class="active">
                 <a class="a2" href="{% url 'registration_register' %}">Register</a>
-            </button>
-            <button>
+            </li>
+            <li class="active">
                  <a class="a2" href="{% url 'auth_login' %}">Login</a>
-            </button>
+            </li>
         {% endif %}
+        </ul>
+        <form class="navbar-form navbar-right" role="search">
+            <button type="submit" class="btn btn-default">
+                Contact Us
+            </button>
+        </form>
     </div>
     </div>
-{% endblock %}
+</nav>
 
-{% block body_block %}
-{% endblock %}
 
-{% block homepage_block %}
-<div>
-    <br>
-    <a id="homepage_link" href="/rango/">Homepage</a><br>
-</div>
-{% endblock %}
+    {% block body_block%}
+    {% endblock %}
+
+
 </body>
 </html>
