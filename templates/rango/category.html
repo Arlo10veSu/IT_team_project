@@ -15,10 +15,12 @@
                 <ul>
                     {% for dish in dishes %}
                         <li>
+                            <div id="div1">
                             <a href="{{ dish.url }}">
                                 <img class="images" src="{{ dish.images }}" alt="{{ dish.dish }}" width="300" height="200">
                                 <span class="dish_name">{{ dish.dish }}</span> &nbsp<span class="badge badge-info">{{ dish.likes }}</span>
                             </a>
+                            </div>
                         </li><br>
                     {% endfor %}
                 </ul>

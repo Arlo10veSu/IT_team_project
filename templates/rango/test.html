@@ -1,33 +1,6 @@
 {% extends 'rango/base2.html' %}
 {% load staticfiles %}
 
-{% block title_block %}
-    <title>Search</title>
-    <link rel="stylesheet" href="{% static 'css/search.css' %}">
-{% endblock %}
-
 {% block body_block %}
-<div class="search">
-<form action="/rango/test/" method="post">
-    {% csrf_token %}
-    <img src="{% static 'images/search.jpg' %}" alt="Search" width="263px" height="177px">
-    <br>
-    <br>
-    <br>
-    <p><input id="text1" name="search" type="text"></p>
-    <p>
-        <img src="{% static 'images/searchlogo.jpg' %}" alt="Search" width="40px" height="40px">
-        <input type="submit" value="Search">
-    </p>
-</form>
-    <div>
-        <strong>About<font color="red"><b>"{{ keyword }}"</b></font>search results amount:
-            <font color="red"><b>"{{ ResultAmount }}"</b></font></strong>
-    </div>
-    <div id="article-list">
-        {% for x in SearchResult %}
-            <a href="{{ x.url }}">{{ x.dish }}</a>
-        {% endfor %}
-</div>
-</div>
+{{ user }}
 {% endblock %}

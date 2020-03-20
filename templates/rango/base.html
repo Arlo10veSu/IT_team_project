@@ -68,6 +68,7 @@
                 {% block image_block %}
                 <img src="{% static 'images/3.jpg' %}" alt="" width="100%" id="pic">
                 {% endblock %}
+
             </div>
         </div>
         <div class="add">
@@ -76,7 +77,10 @@
                     user{{ i.username }}: <br>
                     &nbsp&nbsp&nbsp&nbspcomment: {{ i.comment }} <br>
                 {% endfor %}
+                {% if user.is_authenticated %}
+                <h3>This dish has been Thumbed {{ dish.likes }} times</h3>
                  <input class="input1" type="button" style="color:#ff0000" value="New Comment" id="link">
+                {% endif %}
             </div>
         </div>
 
@@ -117,9 +121,13 @@
             <form action="/rango/soup1/" method="post">
             {% endblock %}
                 {% csrf_token %}
-                <p>user: <input id="text1" name="name_input" value="{{ user.username }}" type="text" readonly></p>
+                <input id="text1" name="name_input" value="{{ user.username }}" type="text" style="display:none">
+                <p><input type="radio" name="like" value="like">Like
+                    <input type="radio" name="like" value="dislike">Dislike </p>
                 <p>comment: <textarea id="text2" name="comment_input" style="OVERFLOW:   hidden"></textarea></p>
-                <div id="addtext" class="login-button"><p><input type="submit" value="submit"></p></div>
+                <div>
+                    <p><input id="addtext" class="login-button" type="submit" value="submit"></p>
+                </div>
             </form>
         </div>
     </div>

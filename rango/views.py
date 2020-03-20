@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 
@@ -7,7 +8,7 @@ from django.urls import reverse
 
 from rango import models
 from rango.forms import CategoryForm, DishForm
-from rango.models import Category, Dish, RemarkForm, Remark, UserComment
+from rango.models import Category, Dish, UserComment
 from rango.forms import UserForm, UserProfileForm
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
@@ -76,10 +77,11 @@ def add_dish(request, category_name_slug):
         return redirect('/rango/')
 
     form = DishForm()
-
     if request.method == 'POST':
+
         form = DishForm(request.POST)
         if form.is_valid():
+            success = 'You added a need dish!'
             if category:
                 dish = form.save(commit=False)
                 dish.category = category
@@ -88,7 +90,7 @@ def add_dish(request, category_name_slug):
             else:
                 print(form.errors)
 
-    context_dict = {'form': form, 'category': category, 'categories': category_list}
+    context_dict = {'form': form, 'category': category, 'categories': category_list, 'success': success}
     return render(request, 'rango/add_dish.html', context=context_dict)
 
 
@@ -168,242 +170,406 @@ def visitor_cookie_handler(request):
     request.session['visits'] = visits
 
 
-def test(request):
-    return render(request, 'rango/test.html')
-
-
 def main_course1(request):
     category_list = Category.objects.order_by('-category')
     d = "main_course1"
+    d2 = "Oil spilled noodles"
+    dish = Dish.objects.get(dish=d2)
+    form = DishForm()
     if request.method == "POST":
-        u = request.POST.get("name_input", None)
+        u = User.objects.get(username=request.user.username)
         c = request.POST.get("comment_input", None)
+        like = request.POST.get("like", None)
         models.UserComment.objects.create(
             username=u,
             comment=c,
             dish=d,
         )
+
+        if like == "like":
+            dish.likes = dish.likes + 1
+            dish.save()
+
         info_list = UserComment.objects.filter(dish=d)
         return render(request, "rango/main_course1.html", {"info_list": info_list,
-                                                           "categories": category_list})
+                                                           "categories": category_list,
+                                                           "form": form,
+                                                           "dish": dish,
+                                                           })
     info_list = UserComment.objects.filter(dish=d)
     return render(request, "rango/main_course1.html", {"info_list": info_list,
-                                                       "categories": category_list})
+                                                       "categories": category_list,
+                                                       "form": form,
+                                                       "dish": dish, })
 
 
 def main_course2(request):
     category_list = Category.objects.order_by('-category')
     d = "main_course2"
+    d2 = "Sambo Rice"
+    dish = Dish.objects.get(dish=d2)
+    form = DishForm()
     if request.method == "POST":
-        u = request.POST.get("name_input", None)
+        u = User.objects.get(username=request.user.username)
         c = request.POST.get("comment_input", None)
+        like = request.POST.get("like", None)
         models.UserComment.objects.create(
             username=u,
             comment=c,
             dish=d,
         )
+
+        if like == "like":
+            dish.likes = dish.likes + 1
+            dish.save()
+
         info_list = UserComment.objects.filter(dish=d)
         return render(request, "rango/main_course2.html", {"info_list": info_list,
-                                                           "categories": category_list})
+                                                           "categories": category_list,
+                                                           "form": form,
+                                                           "dish": dish,
+                                                           })
     info_list = UserComment.objects.filter(dish=d)
     return render(request, "rango/main_course2.html", {"info_list": info_list,
-                                                       "categories": category_list})
+                                                       "categories": category_list,
+                                                       "form": form,
+                                                       "dish": dish, })
 
 
 def main_course3(request):
     category_list = Category.objects.order_by('-category')
     d = "main_course3"
+    d2 = "Sesame catsup baked wheat cake"
+    dish = Dish.objects.get(dish=d2)
+    form = DishForm()
     if request.method == "POST":
-        u = request.POST.get("name_input", None)
+        u = User.objects.get(username=request.user.username)
         c = request.POST.get("comment_input", None)
+        like = request.POST.get("like", None)
         models.UserComment.objects.create(
             username=u,
             comment=c,
             dish=d,
         )
+
+        if like == "like":
+            dish.likes = dish.likes + 1
+            dish.save()
+
         info_list = UserComment.objects.filter(dish=d)
         return render(request, "rango/main_course3.html", {"info_list": info_list,
-                                                           "categories": category_list})
+                                                           "categories": category_list,
+                                                           "form": form,
+                                                           "dish": dish,
+                                                           })
     info_list = UserComment.objects.filter(dish=d)
     return render(request, "rango/main_course3.html", {"info_list": info_list,
-                                                       "categories": category_list})
+                                                       "categories": category_list,
+                                                       "form": form,
+                                                       "dish": dish, })
 
 
 def soup1(request):
     category_list = Category.objects.order_by('-category')
     d = "soup1"
+    d2 = "Hot and Sour Soup"
+    dish = Dish.objects.get(dish=d2)
+    form = DishForm()
     if request.method == "POST":
-        u = request.POST.get("name_input", None)
+        u = User.objects.get(username=request.user.username)
         c = request.POST.get("comment_input", None)
+        like = request.POST.get("like", None)
         models.UserComment.objects.create(
             username=u,
             comment=c,
             dish=d,
         )
+
+        if like == "like":
+            dish.likes = dish.likes + 1
+            dish.save()
+
         info_list = UserComment.objects.filter(dish=d)
         return render(request, "rango/soup1.html", {"info_list": info_list,
-                                                    "categories": category_list})
+                                                    "categories": category_list,
+                                                    "form": form,
+                                                    "dish": dish,
+                                                    })
     info_list = UserComment.objects.filter(dish=d)
     return render(request, "rango/soup1.html", {"info_list": info_list,
-                                                "categories": category_list})
+                                                "categories": category_list,
+                                                "form": form,
+                                                "dish": dish, })
 
 
 def soup2(request):
     category_list = Category.objects.order_by('-category')
     d = "soup2"
+    d2 = "Duck Bone Soup"
+    dish = Dish.objects.get(dish=d2)
+    form = DishForm()
     if request.method == "POST":
-        u = request.POST.get("name_input", None)
+        u = User.objects.get(username=request.user.username)
         c = request.POST.get("comment_input", None)
+        like = request.POST.get("like", None)
         models.UserComment.objects.create(
             username=u,
             comment=c,
             dish=d,
         )
+
+        if like == "like":
+            dish.likes = dish.likes + 1
+            dish.save()
+
         info_list = UserComment.objects.filter(dish=d)
         return render(request, "rango/soup2.html", {"info_list": info_list,
-                                                    "categories": category_list})
+                                                    "categories": category_list,
+                                                    "form": form,
+                                                    "dish": dish,
+                                                    })
     info_list = UserComment.objects.filter(dish=d)
     return render(request, "rango/soup2.html", {"info_list": info_list,
-                                                "categories": category_list})
+                                                "categories": category_list,
+                                                "form": form,
+                                                "dish": dish, })
 
 
 def soup3(request):
     category_list = Category.objects.order_by('-category')
     d = "soup3"
+    d2 = "White Gourd and Pork Ribs Soup"
+    dish = Dish.objects.get(dish=d2)
+    form = DishForm()
     if request.method == "POST":
-        u = request.POST.get("name_input", None)
+        u = User.objects.get(username=request.user.username)
         c = request.POST.get("comment_input", None)
+        like = request.POST.get("like", None)
         models.UserComment.objects.create(
             username=u,
             comment=c,
             dish=d,
         )
+
+        if like == "like":
+            dish.likes = dish.likes + 1
+            dish.save()
+
         info_list = UserComment.objects.filter(dish=d)
         return render(request, "rango/soup3.html", {"info_list": info_list,
-                                                    "categories": category_list})
+                                                    "categories": category_list,
+                                                    "form": form,
+                                                    "dish": dish,
+                                                    })
     info_list = UserComment.objects.filter(dish=d)
     return render(request, "rango/soup3.html", {"info_list": info_list,
-                                                "categories": category_list})
+                                                "categories": category_list,
+                                                "form": form,
+                                                "dish": dish, })
 
 
 def dessert1(request):
     category_list = Category.objects.order_by('-category')
     d = "dessert1"
+    d2 = "Green Bean Soup"
+    dish = Dish.objects.get(dish=d2)
+    form = DishForm()
     if request.method == "POST":
-        u = request.POST.get("name_input", None)
+        u = User.objects.get(username=request.user.username)
         c = request.POST.get("comment_input", None)
+        like = request.POST.get("like", None)
         models.UserComment.objects.create(
             username=u,
             comment=c,
             dish=d,
         )
+
+        if like == "like":
+            dish.likes = dish.likes + 1
+            dish.save()
+
         info_list = UserComment.objects.filter(dish=d)
         return render(request, "rango/dessert1.html", {"info_list": info_list,
-                                                       "categories": category_list})
+                                                       "categories": category_list,
+                                                       "form": form,
+                                                       "dish": dish,
+                                                       })
     info_list = UserComment.objects.filter(dish=d)
     return render(request, "rango/dessert1.html", {"info_list": info_list,
-                                                   "categories": category_list})
+                                                   "categories": category_list,
+                                                   "form": form,
+                                                   "dish": dish, })
 
 
 def dessert2(request):
     category_list = Category.objects.order_by('-category')
     d = "dessert2"
+    d2 = "Black Rice Cake"
+    dish = Dish.objects.get(dish=d2)
+    form = DishForm()
     if request.method == "POST":
-        u = request.POST.get("name_input", None)
+        u = User.objects.get(username=request.user.username)
         c = request.POST.get("comment_input", None)
+        like = request.POST.get("like", None)
         models.UserComment.objects.create(
             username=u,
             comment=c,
             dish=d,
         )
+
+        if like == "like":
+            dish.likes = dish.likes + 1
+            dish.save()
+
         info_list = UserComment.objects.filter(dish=d)
         return render(request, "rango/dessert2.html", {"info_list": info_list,
-                                                       "categories": category_list})
+                                                       "categories": category_list,
+                                                       "form": form,
+                                                       "dish": dish,
+                                                       })
     info_list = UserComment.objects.filter(dish=d)
     return render(request, "rango/dessert2.html", {"info_list": info_list,
-                                                   "categories": category_list})
+                                                   "categories": category_list,
+                                                   "form": form,
+                                                   "dish": dish, })
 
 
 def dessert3(request):
     category_list = Category.objects.order_by('-category')
     d = "dessert3"
+    d2 = "Mung Bean Pastry"
+    dish = Dish.objects.get(dish=d2)
+    form = DishForm()
     if request.method == "POST":
-        u = request.POST.get("name_input", None)
+        u = User.objects.get(username=request.user.username)
         c = request.POST.get("comment_input", None)
+        like = request.POST.get("like", None)
         models.UserComment.objects.create(
             username=u,
             comment=c,
             dish=d,
         )
+
+        if like == "like":
+            dish.likes = dish.likes + 1
+            dish.save()
+
         info_list = UserComment.objects.filter(dish=d)
         return render(request, "rango/dessert3.html", {"info_list": info_list,
-                                                       "categories": category_list})
+                                                       "categories": category_list,
+                                                       "form": form,
+                                                       "dish": dish,
+                                                       })
     info_list = UserComment.objects.filter(dish=d)
     return render(request, "rango/dessert3.html", {"info_list": info_list,
-                                                   "categories": category_list})
+                                                   "categories": category_list,
+                                                   "form": form,
+                                                   "dish": dish, })
 
 
 def starter1(request):
     category_list = Category.objects.order_by('-category')
     d = "starter1"
+    d2 = "Water steamed buns"
+    dish = Dish.objects.get(dish=d2)
+    form = DishForm()
     if request.method == "POST":
-        u = request.POST.get("name_input", None)
+        u = User.objects.get(username=request.user.username)
         c = request.POST.get("comment_input", None)
+        like = request.POST.get("like", None)
         models.UserComment.objects.create(
             username=u,
             comment=c,
             dish=d,
         )
+
+        if like == "like":
+            dish.likes = dish.likes + 1
+            dish.save()
+
         info_list = UserComment.objects.filter(dish=d)
         return render(request, "rango/starter1.html", {"info_list": info_list,
-                                                       "categories": category_list})
+                                                       "categories": category_list,
+                                                       "form": form,
+                                                       "dish": dish,
+                                                       })
     info_list = UserComment.objects.filter(dish=d)
     return render(request, "rango/starter1.html", {"info_list": info_list,
-                                                   "categories": category_list})
+                                                   "categories": category_list,
+                                                   "form": form,
+                                                   "dish": dish, })
 
 
 def starter2(request):
     category_list = Category.objects.order_by('-category')
     d = "starter2"
+    d2 = "Hot and sour chicken feet"
+    dish = Dish.objects.get(dish=d2)
+    form = DishForm()
     if request.method == "POST":
-        u = request.POST.get("name_input", None)
+        u = User.objects.get(username=request.user.username)
         c = request.POST.get("comment_input", None)
+        like = request.POST.get("like", None)
         models.UserComment.objects.create(
             username=u,
             comment=c,
             dish=d,
         )
+
+        if like == "like":
+            dish.likes = dish.likes + 1
+            dish.save()
+
         info_list = UserComment.objects.filter(dish=d)
         return render(request, "rango/starter2.html", {"info_list": info_list,
-                                                       "categories": category_list})
+                                                       "categories": category_list,
+                                                       "form": form,
+                                                       "dish": dish,
+                                                       })
     info_list = UserComment.objects.filter(dish=d)
     return render(request, "rango/starter2.html", {"info_list": info_list,
-                                                   "categories": category_list})
+                                                   "categories": category_list,
+                                                   "form": form,
+                                                   "dish": dish, })
 
 
 def starter3(request):
     category_list = Category.objects.order_by('-category')
     d = "starter3"
+
+    d2 = "Honey Pork Jerky"
+    dish = Dish.objects.get(dish=d2)
+    form = DishForm()
     if request.method == "POST":
-        u = request.POST.get("name_input", None)
+        u = User.objects.get(username=request.user.username)
         c = request.POST.get("comment_input", None)
+        like = request.POST.get("like", None)
         models.UserComment.objects.create(
             username=u,
             comment=c,
             dish=d,
         )
+
+        if like == "like":
+            dish.likes = dish.likes + 1
+            dish.save()
+
         info_list = UserComment.objects.filter(dish=d)
         return render(request, "rango/starter3.html", {"info_list": info_list,
-                                                       "categories": category_list
+                                                       "categories": category_list,
+                                                       "form": form,
+                                                       "dish": dish,
                                                        })
     info_list = UserComment.objects.filter(dish=d)
     return render(request, "rango/starter3.html", {"info_list": info_list,
-                                                   "categories": category_list})
+                                                   "categories": category_list,
+                                                   "form": form,
+                                                   "dish": dish, })
 
 
 def userInfor(request):
     if request.method == "POST":
-        u = request.POST.get("username", None)
+        u = User.objects.get(username=request.user.username)
         c = request.POST.get("comment", None)
 
         models.UserInfor.objects.create(
@@ -433,8 +599,8 @@ def test(request):
         context_dict['SearchResult'] = SearchResult
         context_dict['SearchStatus'] = SearchStatus
         context_dict['ResultAmount'] = ResultAmount
-        return render(request, 'rango/test.html', context=context_dict)
-    return render(request, 'rango/test.html')
+        return render(request, 'rango/search.html', context=context_dict)
+    return render(request, 'rango/search.html')
 
 
 def index(request):
@@ -442,6 +608,12 @@ def index(request):
     category_list = Category.objects.order_by('-category')
     context_dict['categories'] = category_list
 
-
     response = render(request, 'rango/index.html', context=context_dict)
     return response
+
+
+def test(request):
+    user = User.objects.get(username=request.user.username)
+    context_dict = {}
+    context_dict['user'] = user
+    return render(request, 'rango/test.html', context=context_dict)

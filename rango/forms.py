@@ -1,42 +1,30 @@
 from django import forms
 from django.contrib.auth.models import User
 
-from rango.models import Category, Dish, UserProfile
+from rango.models import Category, Dish, UserProfile, UserComment
 
 
 class CategoryForm(forms.ModelForm):
-   category = forms.CharField(max_length=128,
-                          help_text="Please tell me the category name.")
-   slug = forms.CharField(widget=forms.HiddenInput(), required=False)
+    category = forms.CharField(max_length=128,
+                               help_text="Please tell me the category name.")
+    slug = forms.CharField(widget=forms.HiddenInput(), required=False)
 
-
-   class Meta:
-       model = Category
-       fields = ('category', )
+    class Meta:
+        model = Category
+        fields = ('category',)
 
 
 class DishForm(forms.ModelForm):
     dish = forms.CharField(max_length=128,
-                            help_text="Please enter the dish name.")
-    ingredient = forms.CharField(max_length=128,
-                                 help_text="Please enter the ingredients.")
-    cost = forms.CharField(max_length=128,
-                           help_text="Please tell me the price of the dishes")
-    url = forms.URLField(max_length=200,
-                         help_text="Please enter the URL of dishes introduction.")
-
-    def clean(self):
-        cleaned_data = self.cleaned_data
-        url = cleaned_data.get('url')
-
-        if url and not url.startwith('http://'):
-            url = 'http://' + url
-            cleaned_data['url'] = url
-        return cleaned_data
+                           help_text="Please enter the dish name.")
+    url = forms.CharField(
+        help_text="Please enter the URL of dishes introduction.")
+    likes = forms.IntegerField(widget=forms.HiddenInput(), initial=0, required=False)
+    images = forms.CharField(widget=forms.HiddenInput(), initial="/static/images/photo.jpg", required=False)
 
     class Meta:
         model = Dish
-        exclude = ('category', )
+        exclude = ('category',)
 
 
 class UserForm(forms.ModelForm):
@@ -52,3 +40,12 @@ class UserProfileForm(forms.ModelForm):
         model = UserProfile
         fields = ('website', 'picture')
 
+
+class CommentForm(forms.ModelForm):
+    likes = forms.BooleanField(required=False)
+    comments = forms.CharField(label="多行输入", max_length=100, widget=forms.Textarea)
+
+    #imge = forms.ImageField(label="图片上传")
+    class Meta:
+        model = UserComment
+        fields = ('islike', 'comment')

@@ -1,4 +1,6 @@
 from django.contrib.auth.models import User
+from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.models import ContentType
 from django.db import models
 from django import forms
 
@@ -25,9 +27,9 @@ class Category(models.Model):
 class Dish(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     dish = models.CharField(max_length=128, unique=True)
-    url = models.URLField()
+    url = models.CharField(max_length=128, default="https://www.allrecipes.com/recipes/1642/everyday-cooking/")
     likes = models.IntegerField(default=0)
-    images = models.CharField(max_length=128, default="")
+    images = models.CharField(max_length=128, default="/static/images/photo.jpg")
 
     class Meta:
         verbose_name_plural = 'Dishes'
@@ -52,39 +54,12 @@ TOPIC_CHOICES = (
 )
 
 
-class RemarkForm(forms.Form):
-    subject = forms.CharField(max_length=100,label='Mark Board')
-    mail = forms.EmailField(label='email')
-    topic = forms.ChoiceField(choices=TOPIC_CHOICES,label='choose one topic')
-    message = forms.CharField(label='content for mark',widget=forms.Textarea)
-    cc_myself = forms.BooleanField(required=False,label='watch this tie')
-
-
-class Remark(models.Model):
-    subject = models.CharField(max_length=100)
-    mail = models.EmailField()
-    topic = models.CharField(max_length=100)
-    message = models.CharField(max_length=300)
-    cc_myself = models.BooleanField()
-
-    def __str__(self):
-        return self.subject
-
-    class Meta:
-        ordering = ['subject']
-
-
-class UserInfor(models.Model):
-    username = models.CharField(max_length=64)
-    comment = models.CharField(max_length=1028, default='')
-
-    def __str__(self):
-        return self.username
-
 class UserComment(models.Model):
     username = models.CharField(max_length=64)
     comment = models.CharField(max_length=1028, default='')
     dish = models.CharField(max_length=128, default='')
+    islike = models.BooleanField(default=True)
 
     def __str__(self):
         return self.username
+
