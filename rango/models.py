@@ -54,6 +54,7 @@ TOPIC_CHOICES = (
 )
 
 
+
 class UserComment(models.Model):
     username = models.CharField(max_length=64)
     comment = models.CharField(max_length=1028, default='')
