@@ -14,20 +14,31 @@
     <a href="{% url 'auth_password_change' %}">Change your Password</a>
     <div>
         <h3>Your Comments:</h3>
-        <ul>
+        <table style="border-collapse:separate; border-spacing:10px 10px;">
+            <thead>
+                <tr>
+                    <th colspan="2">Comments</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>DISH</td>
+                <td>COMMENT</td>
+                <td>Like</td>
+            </tr>
             {% for comment in comment_list %}
-
-                <li>
-                    {{ comment.dish }}: &nbsp&nbsp
-                    {{ comment.comment }} &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                    {% if comment.islike %}
+                <tr>
+                    <td>{{ comment.dish }}</td>
+                    <td>{{ comment.comment }}</td>
+                    <td>{% if comment.islike %}
                         You Thumbed up this Dish 😄!
-                    {% else %}
-                        You disliked this Dish 😡
-                    {% endif %}
-                </li>
-            {% endfor %}
-        </ul>
+                        {% else %}
+                            You disliked this Dish 😡
+                        {% endif %}</td>
+                </tr>
+            </tbody>
+             {% endfor %}
+        </table>
 
     </div>
 
