@@ -39,7 +39,7 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
             {% if user.is_authenticated %}
-            hello {{ user.username }}!
+            <a href="{% url 'rango:userInfor' %}"> hi {{ user.username }}!</a>
             <li class="active">
                 <a class="a2" href=" {% url 'auth_logout' %}?next=/rango/">Logout</a>
             </li>
@@ -54,7 +54,9 @@
         </ul>
         <form class="navbar-form navbar-right" role="search">
             <button type="submit" class="btn btn-default">
-                Contact Us
+                <a href="mailto:2471083j@student.gla.ac.uk
+                        subject=About Django Project">
+                        Contact Us</a>
             </button>
         </form>
     </div>

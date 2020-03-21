@@ -10,3 +10,17 @@
     border: none;
 }
 
+.main_text
+{
+    margin-left: 10%;
+    float: left;
+    display：inline-block;
+}
+
+.image_hello
+{
+    margin-top: 20%;
+    float: right;
+    display：inline-block;
+}
+

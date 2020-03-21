@@ -11,8 +11,10 @@ class DishAdmin(admin.ModelAdmin):
 class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('category',)}
 
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ('username', 'dish', 'comment', 'islike')
 
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Dish, DishAdmin)
 admin.site.register(UserProfile)
-admin.site.register(UserComment)
+admin.site.register(UserComment, CommentAdmin)

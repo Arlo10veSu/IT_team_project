@@ -180,15 +180,17 @@ def main_course1(request):
         u = User.objects.get(username=request.user.username)
         c = request.POST.get("comment_input", None)
         like = request.POST.get("like", None)
+        isl = False
+        if like == "like":
+            isl = True
+            dish.likes = dish.likes + 1
+            dish.save()
         models.UserComment.objects.create(
             username=u,
             comment=c,
             dish=d,
+            islike=isl,
         )
-
-        if like == "like":
-            dish.likes = dish.likes + 1
-            dish.save()
 
         info_list = UserComment.objects.filter(dish=d)
         return render(request, "rango/main_course1.html", {"info_list": info_list,
@@ -213,15 +215,17 @@ def main_course2(request):
         u = User.objects.get(username=request.user.username)
         c = request.POST.get("comment_input", None)
         like = request.POST.get("like", None)
+        isl = False
+        if like == "like":
+            isl = True
+            dish.likes = dish.likes + 1
+            dish.save()
         models.UserComment.objects.create(
             username=u,
             comment=c,
             dish=d,
+            islike=isl,
         )
-
-        if like == "like":
-            dish.likes = dish.likes + 1
-            dish.save()
 
         info_list = UserComment.objects.filter(dish=d)
         return render(request, "rango/main_course2.html", {"info_list": info_list,
@@ -246,15 +250,17 @@ def main_course3(request):
         u = User.objects.get(username=request.user.username)
         c = request.POST.get("comment_input", None)
         like = request.POST.get("like", None)
+        isl = False
+        if like == "like":
+            isl = True
+            dish.likes = dish.likes + 1
+            dish.save()
         models.UserComment.objects.create(
             username=u,
             comment=c,
             dish=d,
+            islike=isl,
         )
-
-        if like == "like":
-            dish.likes = dish.likes + 1
-            dish.save()
 
         info_list = UserComment.objects.filter(dish=d)
         return render(request, "rango/main_course3.html", {"info_list": info_list,
@@ -279,15 +285,17 @@ def soup1(request):
         u = User.objects.get(username=request.user.username)
         c = request.POST.get("comment_input", None)
         like = request.POST.get("like", None)
+        isl = False
+        if like == "like":
+            isl = True
+            dish.likes = dish.likes + 1
+            dish.save()
         models.UserComment.objects.create(
             username=u,
             comment=c,
             dish=d,
+            islike=isl,
         )
-
-        if like == "like":
-            dish.likes = dish.likes + 1
-            dish.save()
 
         info_list = UserComment.objects.filter(dish=d)
         return render(request, "rango/soup1.html", {"info_list": info_list,
@@ -312,15 +320,17 @@ def soup2(request):
         u = User.objects.get(username=request.user.username)
         c = request.POST.get("comment_input", None)
         like = request.POST.get("like", None)
+        isl = False
+        if like == "like":
+            isl = True
+            dish.likes = dish.likes + 1
+            dish.save()
         models.UserComment.objects.create(
             username=u,
             comment=c,
             dish=d,
+            islike=isl,
         )
-
-        if like == "like":
-            dish.likes = dish.likes + 1
-            dish.save()
 
         info_list = UserComment.objects.filter(dish=d)
         return render(request, "rango/soup2.html", {"info_list": info_list,
@@ -345,15 +355,17 @@ def soup3(request):
         u = User.objects.get(username=request.user.username)
         c = request.POST.get("comment_input", None)
         like = request.POST.get("like", None)
+        isl = False
+        if like == "like":
+            isl = True
+            dish.likes = dish.likes + 1
+            dish.save()
         models.UserComment.objects.create(
             username=u,
             comment=c,
             dish=d,
+            islike=isl,
         )
-
-        if like == "like":
-            dish.likes = dish.likes + 1
-            dish.save()
 
         info_list = UserComment.objects.filter(dish=d)
         return render(request, "rango/soup3.html", {"info_list": info_list,
@@ -378,15 +390,17 @@ def dessert1(request):
         u = User.objects.get(username=request.user.username)
         c = request.POST.get("comment_input", None)
         like = request.POST.get("like", None)
+        isl = False
+        if like == "like":
+            isl = True
+            dish.likes = dish.likes + 1
+            dish.save()
         models.UserComment.objects.create(
             username=u,
             comment=c,
             dish=d,
+            islike=isl,
         )
-
-        if like == "like":
-            dish.likes = dish.likes + 1
-            dish.save()
 
         info_list = UserComment.objects.filter(dish=d)
         return render(request, "rango/dessert1.html", {"info_list": info_list,
@@ -411,15 +425,17 @@ def dessert2(request):
         u = User.objects.get(username=request.user.username)
         c = request.POST.get("comment_input", None)
         like = request.POST.get("like", None)
+        isl = False
+        if like == "like":
+            isl = True
+            dish.likes = dish.likes + 1
+            dish.save()
         models.UserComment.objects.create(
             username=u,
             comment=c,
             dish=d,
+            islike=isl,
         )
-
-        if like == "like":
-            dish.likes = dish.likes + 1
-            dish.save()
 
         info_list = UserComment.objects.filter(dish=d)
         return render(request, "rango/dessert2.html", {"info_list": info_list,
@@ -444,15 +460,17 @@ def dessert3(request):
         u = User.objects.get(username=request.user.username)
         c = request.POST.get("comment_input", None)
         like = request.POST.get("like", None)
+        isl = False
+        if like == "like":
+            isl = True
+            dish.likes = dish.likes + 1
+            dish.save()
         models.UserComment.objects.create(
             username=u,
             comment=c,
             dish=d,
+            islike=isl,
         )
-
-        if like == "like":
-            dish.likes = dish.likes + 1
-            dish.save()
 
         info_list = UserComment.objects.filter(dish=d)
         return render(request, "rango/dessert3.html", {"info_list": info_list,
@@ -477,15 +495,17 @@ def starter1(request):
         u = User.objects.get(username=request.user.username)
         c = request.POST.get("comment_input", None)
         like = request.POST.get("like", None)
+        isl = False
+        if like == "like":
+            isl = True
+            dish.likes = dish.likes + 1
+            dish.save()
         models.UserComment.objects.create(
             username=u,
             comment=c,
             dish=d,
+            islike=isl,
         )
-
-        if like == "like":
-            dish.likes = dish.likes + 1
-            dish.save()
 
         info_list = UserComment.objects.filter(dish=d)
         return render(request, "rango/starter1.html", {"info_list": info_list,
@@ -510,15 +530,17 @@ def starter2(request):
         u = User.objects.get(username=request.user.username)
         c = request.POST.get("comment_input", None)
         like = request.POST.get("like", None)
+        isl = False
+        if like == "like":
+            isl = True
+            dish.likes = dish.likes + 1
+            dish.save()
         models.UserComment.objects.create(
             username=u,
             comment=c,
             dish=d,
+            islike=isl,
         )
-
-        if like == "like":
-            dish.likes = dish.likes + 1
-            dish.save()
 
         info_list = UserComment.objects.filter(dish=d)
         return render(request, "rango/starter2.html", {"info_list": info_list,
@@ -544,15 +566,17 @@ def starter3(request):
         u = User.objects.get(username=request.user.username)
         c = request.POST.get("comment_input", None)
         like = request.POST.get("like", None)
+        isl = False
+        if like == "like":
+            isl = True
+            dish.likes = dish.likes + 1
+            dish.save()
         models.UserComment.objects.create(
             username=u,
             comment=c,
             dish=d,
+            islike=isl,
         )
-
-        if like == "like":
-            dish.likes = dish.likes + 1
-            dish.save()
 
         info_list = UserComment.objects.filter(dish=d)
         return render(request, "rango/starter3.html", {"info_list": info_list,
@@ -568,18 +592,11 @@ def starter3(request):
 
 
 def userInfor(request):
-    if request.method == "POST":
-        u = User.objects.get(username=request.user.username)
-        c = request.POST.get("comment", None)
-
-        models.UserInfor.objects.create(
-            username=u,
-            comment=c,
-        )
-        info_list = models.UserInfor.objects.all()
-        return render(request, "rango/userInfor.html", {"info_list": info_list})
-    info_list = models.UserInfor.objects.all()
-    return render(request, "rango/userInfor.html", {"info_list": info_list})
+    user = User.objects.get(username=request.user.username)
+    comment_list = UserComment.objects.filter(username=user)
+    context_dict={}
+    context_dict['comment_list'] = comment_list
+    return render(request, "rango/userInfor.html", context=context_dict)
 
 
 def test(request):
