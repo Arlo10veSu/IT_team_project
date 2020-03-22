@@ -43,9 +43,8 @@ class UserProfileForm(forms.ModelForm):
 
 class CommentForm(forms.ModelForm):
     likes = forms.BooleanField(required=False)
-    comments = forms.CharField(label="多行输入", max_length=100, widget=forms.Textarea)
+    comments = forms.CharField(label="input", max_length=100, widget=forms.Textarea)
 
-    #imge = forms.ImageField(label="图片上传")
     class Meta:
         model = UserComment
         fields = ('islike', 'comment')
