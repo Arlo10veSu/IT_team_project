@@ -14,7 +14,7 @@
             {% if dishes %}
             <ul>
                 {% for dish in dishes %}
-                    <a href="{{ dish.url }}">
+                    <a href={{ dish.url }}>
                         {{ dish.dish }}&nbsp
                         <span class="badge badge-info">{{ dish.likes }}</span>
                     </a><br>

@@ -7,7 +7,7 @@ from django import forms
 # Create your models here.
 from django.template.defaultfilters import slugify
 
-
+# this is the category model
 class Category(models.Model):
     category = models.CharField(max_length=128, unique=True)
     slug = models.SlugField(unique=True)
@@ -23,7 +23,7 @@ class Category(models.Model):
     def __str__(self):
         return self.category
 
-
+# this is the dish model which contains five attributes inside it.
 class Dish(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     dish = models.CharField(max_length=128, unique=True)
@@ -37,7 +37,7 @@ class Dish(models.Model):
     def __str__(self):
         return self.dish
 
-
+# this is the user model
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     website = models.URLField(blank=True)
@@ -54,7 +54,7 @@ TOPIC_CHOICES = (
 )
 
 
-
+# this is the user comment model
 class UserComment(models.Model):
     username = models.CharField(max_length=64)
     comment = models.CharField(max_length=1028, default='')

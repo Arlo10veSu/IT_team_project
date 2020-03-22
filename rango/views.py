@@ -14,7 +14,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from datetime import datetime
 
-
+# this is our homepage views. It will send the categories and dishes to the HTML
 def homepage(request):
     category_list = Category.objects.order_by('-category')
     dish_list = Dish.objects.order_by('-likes')[:5]
@@ -30,7 +30,7 @@ def homepage(request):
     response = render(request, 'rango/homepage.html', context=context_dict)
     return response
 
-
+# This is the views of category pages:
 def show_category(request, category_name_slug):
     context_dict = {}
     category_list = Category.objects.order_by('-category')
@@ -39,18 +39,18 @@ def show_category(request, category_name_slug):
         category = Category.objects.get(slug=category_name_slug)
 
         dishes = Dish.objects.filter(category=category)
-
+        # dishes here means all the dishes of this category
         context_dict['dishes'] = dishes
 
         context_dict['category'] = category
 
     except Category.DoesNotExist:
         context_dict['category'] = None
-        context_dict['pages'] = None
+        context_dict['dishes'] = None
 
     return render(request, 'rango/category.html', context_dict)
 
-
+# this is for add one category
 def add_category(request):
     form = CategoryForm
     category_list = Category.objects.order_by('-category')
@@ -66,6 +66,8 @@ def add_category(request):
                                                        'categories': category_list})
 
 
+# this method is to add a new dish:
+    # Beacause our dish pages are created by our own therefore this time the dishes url MUST be a outside webpage
 def add_dish(request, category_name_slug):
     category_list = Category.objects.order_by('-category')
     try:
@@ -93,7 +95,7 @@ def add_dish(request, category_name_slug):
     context_dict = {'form': form, 'category': category, 'categories': category_list,}
     return render(request, 'rango/add_dish.html', context=context_dict)
 
-
+# This is the old registration method. But we applied django-registration-redux now so it is no longer used
 def register(request):
     registered = False
 
@@ -123,7 +125,7 @@ def register(request):
     return render(request, 'rango/register.html',
                   context={'user_form': user_form, 'profile_form': profile_form, 'registered': registered})
 
-
+# Same to above
 def user_login(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -169,22 +171,31 @@ def visitor_cookie_handler(request):
         request.session['last_visit'] = last_visit_cookie
     request.session['visits'] = visits
 
-
+# From main_course1 to dessert three, we used the similar method:
+    # because we want to recieve the users comments and output all users comments
+    # therefore we need to create a form to connect users comment and users like/dislike to the dishes
+    # then we collect users informations by get user objects and get the dish using dish names:
 def main_course1(request):
     category_list = Category.objects.order_by('-category')
 
     d2 = "Oil spilled noodles"
+    # get dish name
     dish = Dish.objects.get(dish=d2)
     form = DishForm()
     if request.method == "POST":
+        # user name
         u = User.objects.get(username=request.user.username)
+        # comment
         c = request.POST.get("comment_input", None)
+        # like
         like = request.POST.get("like", None)
         isl = False
+        # if like let isl(islike) to be true, and let the dish.likes ++
         if like == "like":
             isl = True
             dish.likes = dish.likes + 1
             dish.save()
+            # create the comment and save it
         models.UserComment.objects.create(
             username=u,
             comment=c,
@@ -204,7 +215,7 @@ def main_course1(request):
                                                        "form": form,
                                                        "dish": dish, })
 
-
+# All dish views below are similar to main_course1!
 def main_course2(request):
     category_list = Category.objects.order_by('-category')
     d2 = "Sambo Rice"
@@ -579,23 +590,27 @@ def starter3(request):
                                                    "form": form,
                                                    "dish": dish, })
 
-
+# This is to print all the comment which have been made by users
 def userInfor(request):
+    # if user name is correct
     user = User.objects.get(username=request.user.username)
+    # get the comment_list of this user
     comment_list = UserComment.objects.filter(username=user)
     context_dict={}
     context_dict['comment_list'] = comment_list
     return render(request, "rango/userInfor.html", context=context_dict)
 
-
+# this is the internal search of our django website
 def test(request):
     context_dict = {}
     category_list = Category.objects.order_by('-category')
     context_dict['categories'] = category_list
     if request.method == "POST":
+        # get the keyword
         keyword = request.POST.get("search", None)
         allDish = Dish.objects.all()
         SearchResult = []
+        # search all dishes if dish name has this word, add it to search result
         for x in allDish:
             if keyword in x.dish:
                 SearchResult.append(x)
@@ -608,7 +623,7 @@ def test(request):
         return render(request, 'rango/search.html', context=context_dict)
     return render(request, 'rango/search.html')
 
-
+# this method never used...
 def index(request):
     context_dict = {}
     category_list = Category.objects.order_by('-category')

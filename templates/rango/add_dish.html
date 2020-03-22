@@ -1,8 +1,14 @@
 {% extends 'rango/base2.html' %}
 {% load staticfiles %}
 
+<! --
+# this function is not good enough.
+# because all our dishes page are created by ourselves therefore we cannot directly generate an html file for user...
+# So our add dish can only redirect users to outside place.
+-->
 {% block body_block %}
         <h1>Add a dish</h1>
+
         <div>
             <form id="add_dish_form" method="post" action="/rango/category/{{ category.slug }}/add_dish/">
                 {% csrf_token %}
