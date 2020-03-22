@@ -8,6 +8,11 @@ var jsRight=document.getElementById("right");
 
 var num=1;
 
+// this is the js function for changing the picture:
+// the methodology of this is that we create a iterator num.
+    // if click left button num--
+    // if click right button num++
+    // if the num = n then show the picture pn
 jsLeft.onclick = function() {
     num --;
     if (num < 1) {

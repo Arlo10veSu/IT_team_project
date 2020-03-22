@@ -1,3 +1,5 @@
+// this method is to create a inner html to write the comment sections.
+
 var login = document.querySelector('.login');
 var mask = document.querySelector('.login-bg');
 var link = document.querySelector('#link');

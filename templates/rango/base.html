@@ -1,5 +1,15 @@
 <!DOCTYPE html>
 {% load staticfiles %}
+
+<!--
+    This is the base of all dishes html:
+    it includes: navigation bar
+                 food name
+                 food image
+                 food ingredients
+                 cooking method
+                 comment box
+ -->
 <html>
 <head>
 	<meta charset="utf-8">
@@ -14,6 +24,7 @@
 </head>
 <body>
 
+<!-- navigation bar -->
 <nav class="navbar navbar-default" role="navigation">
     <div class="container-fluid">
     <div class="navbar-header">
@@ -63,6 +74,7 @@
     </div>
 </nav>
 
+<!--food name and image-->
 <div class="main w1000">
     <div class="main_l f">
         <div class="slide" id="box">
@@ -73,6 +85,8 @@
 
             </div>
         </div>
+
+        <!--comment box-->
         <div class="add">
             <div>
                 {% for i in info_list %}
@@ -87,6 +101,8 @@
         </div>
 
     </div>
+
+    <!--ingredients-->
     <div class="main_r r">
         <div class="ing">
             <p>Ingredients</p>
@@ -101,6 +117,7 @@
             {% endblock %}
         </div>
 
+        <!--Cooking method-->
         <div class="how">
             <p>How to cook</p>
             <div>
@@ -113,6 +130,7 @@
     </div>
 </div>
 
+<!--add comment-->
 <div id="login" class="login">
     <div id="title" class="login-title">Add Comments
         <span><a id="closeBtn" href="javascript:void(0);" class="close-login">Close</a></span>
@@ -120,6 +138,7 @@
     <div class="login-input-content">
         <div class="login-input">
             {% block comment_block %}
+            <!--The form we send-->
             <form action="/rango/soup1/" method="post">
             {% endblock %}
                 {% csrf_token %}

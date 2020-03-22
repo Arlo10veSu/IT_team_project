@@ -2,6 +2,9 @@
 {% load staticfiles %}
 <html>
 <head>
+    <!--
+        This is the base html of the navigation bar. It used bookstrap to manage the layout
+     -->
 	<meta charset="utf-8">
 
 	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
@@ -18,12 +21,15 @@
 <nav class="navbar navbar-default" role="navigation">
     <div class="container-fluid">
     <div class="navbar-header">
+        <!--Website Theme-->
         <a class="navbar-brand" href="/rango/">Chinese Food</a>
     </div>
     <div>
+        <!--Website search-->
         <ul class="nav navbar-nav navbar-left">
             <li class="active"><a href="/rango/">Homepage</a></li>
             <li><a href="{% url 'rango:test' %}">Search</a></li>
+            <!--dropdown menu of categories-->
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     Categories
@@ -38,6 +44,7 @@
                 </ul>
             </li>
         </ul>
+        <!--register and login system-->
         <ul class="nav navbar-nav navbar-right">
             {% if user.is_authenticated %}
             <a href="{% url 'rango:userInfor' %}"> hi {{ user.username }}!</a>

@@ -8,7 +8,7 @@ import django
 django.setup()
 from rango.models import Category, Dish
 
-#
+
 
 def populate():
     appetizer = [
